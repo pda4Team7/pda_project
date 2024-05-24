@@ -3,27 +3,31 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-<<<<<<< HEAD
-
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("Connected Successful!"))
-  .catch((err) => console.log(err));
-
-=======
 var cors = require("cors");
 const session = require("express-session");
 
+/**
+ * 환경변수 / 몽고디비 연결
+ */
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+dotenv.config();
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to MongoDB successfully!"))
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1); // 연결 실패 시 프로세스 종료
+  });
 
 /************
  *
  * 라우터 추가
  *
  *************/
->>>>>>> f7d00825965e8f39de3329a085adb8a06acca0cb
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -40,9 +44,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-<<<<<<< HEAD
 
-=======
 // session 추가
 app.use(
   session({
@@ -61,7 +63,6 @@ app.use(
  * 라우터 URL 설정
  *
  *************/
->>>>>>> f7d00825965e8f39de3329a085adb8a06acca0cb
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
