@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model("User", userSchema);
+// DB에 user 컬렉션 생성
+const User = mongoose.model("user", userSchema);
 
 module.exports = User;
