@@ -41,13 +41,19 @@ const seatInfoSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // 생성된 시간, TTL(Time-To-Live) 인덱스 적용
+  // 생성된 시간
   createdAt: {
     type: Date,
     default: Date.now,
-    index: { expire: "20s" },
+  },
+  // 만료를 위한 설정
+  expireAt: {
+    type: Date,
   },
 });
+
+// TTL 인덱스 적용
+seatInfoSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
 const SeatInfo = mongoose.model("SeatInfo", seatInfoSchema);
 
