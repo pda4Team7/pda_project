@@ -19,4 +19,43 @@ router.get("/", (req, res) => {
     });
 });
 
+// 정보 추가
+router.post("/", (req, res) => {
+  const user = req.body.user;
+  const startSt = req.body.startSt;
+  const endSt = req.body.endSt;
+  const trainNum = req.body.trainNum;
+  const compartment = req.body.compartment;
+  const isSeated = req.body.isSeated;
+  const clothes = req.body.clothes;
+  const seatNum = req.body.seatNum;
+
+  /**
+   * 테스트를 위한 코드
+   * 10초 후 삭제 의미
+   */
+  let d = new Date();
+  d.setSeconds(d.getSeconds() + 10);
+  const r = new Date(d);
+
+  SeatInfo.create({
+    user,
+    startSt,
+    endSt,
+    trainNum,
+    compartment,
+    isSeated,
+    clothes,
+    seatNum,
+    expireAt: r,
+  })
+    .then((result) => {
+      res.status(201).json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.json(error);
+    });
+});
+
 module.exports = router;
