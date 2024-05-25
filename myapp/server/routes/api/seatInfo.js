@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   SeatInfo.find()
     .then((info) => {
       if (info.length === 0) {
-        res.status(204).json({ message: "비어 있음." });
+        res.json({ message: "비어 있음." });
       } else {
         res.json(info);
       }
