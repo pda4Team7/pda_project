@@ -1,3 +1,12 @@
+#root {
+  height: 100vh;
+  font-family: 'Alef';
+}
+
+input {
+  font-family: 'Nunito';
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
