@@ -60,7 +60,9 @@ const visibleUser = userSchema.virtual("visibleUser");
 visibleUser.get(function () {
   return {
     _id: this._id,
-    nick: this.nickname,
+    nickname: this.nickname,
+    ticket: this.ticket,
+    today_ticket: this.today_ticket,
   };
 });
 
