@@ -29,6 +29,21 @@ router.get("/", (req, res) => {
     });
 });
 
+// 유저 상세 조회
+router.get("/detail", authenticate, async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ error: "유저 조회가 안됨" });
+    }
+
+    return res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // 회원 가입
 router.post("/signup", async (req, res, next) => {
   try {
