@@ -5,7 +5,7 @@ import { serverLogin } from "~/apis/auth.js";
 
 const Login = () => {
   // login을 시도하는 userEmail과 usePassword
-  const [useremail, setUserEmail] = useState('');
+  const [usernickname, setUserNickname] = useState('');
   const [userpassword, setUserPassword] = useState('');
   // login에 성공한 user의 Email과 Password 정보
   const [user, setUser] = useState(null);
@@ -13,14 +13,14 @@ const Login = () => {
   // test용 user 로그인 처리
   useEffect(() =>
     setUser({
-    email: "hicoldegg@gmail.com",
+    nickname: "hicoldegg",
     password: "1d#dsfjk@!fdsf",
   }),[]);
 
   // 로그인 버튼을 누르면 호출되는 함수
   const handleLogin = (event) => {
     event.preventDefault();    
-    console.log('Email:', useremail);
+    console.log('Nickname:', usernickname);
     console.log('Password:', userpassword);
 
     // serverLogin 함수를 통해 DB에 저장되어 있는 User 정보와 일치하는지 request 요청을 보내고,
@@ -56,7 +56,7 @@ const Login = () => {
             type="text"
             placeholder="Enter Email"
             style={{fontStyle : "italic"}}
-            value={useremail}
+            value={usernickname}
             onChange={(e) => setUserEmail(e.target.value)}
           />
         </Form.Group>
