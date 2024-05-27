@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
 
 const SeatInfo = require("../../models/SeatInfo");
 
@@ -19,21 +20,40 @@ router.get("/", (req, res) => {
     });
 });
 
+// 해당역에 도착하는 열차번호 찾는 함수
+async function subway(startSt) {
+  var url = `http://swopenapi.seoul.go.kr/api/subway/${process.env.SUBWAY_KEY}/json/realtimeStationArrival/0/5/${startSt}`; /* URL */
+
+  const trainNum = await axios
+    .get(url)
+    .then((response) => {
+      // API 응답에서  추출
+      return response.data.realtimeArrivalList[0].btrainNo; // 첫 번째 도착 열차의 열차번호
+    })
+    .catch((error) => {
+      console.error("Error fetching subwayInfo:", error);
+      throw error;
+    });
+  return trainNum;
+}
+
 // 정보 추가
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const user = req.body.user;
   const startSt = req.body.startSt;
   const endSt = req.body.endSt;
-  const trainNum = req.body.trainNum;
   const compartment = req.body.compartment;
   const isSeated = req.body.isSeated;
   const clothes = req.body.clothes;
   const seatNum = req.body.seatNum;
+  const trainNum = await subway(startSt);
 
-  /**
-   * 테스트를 위한 코드
-   * 10초 후 삭제 의미
-   */
+  console.log(user, trainNum);
+
+  // /**
+  //  * 테스트를 위한 코드
+  //  * 10초 후 삭제 의미s
+  //  */
   let d = new Date();
   d.setSeconds(d.getSeconds() + 10);
   const r = new Date(d);
