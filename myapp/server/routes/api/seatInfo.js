@@ -1,8 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const {
+  createToken,
+  verifyToken,
+  authenticate,
+  signInRequired,
+} = require("../../utils/auth");
 
 const SeatInfo = require("../../models/SeatInfo");
+const User = require("../../models/User");
 
 // 전체 정보 조회
 router.get("/", (req, res) => {
@@ -38,7 +45,7 @@ async function subway(startSt) {
 }
 
 // 정보 추가
-router.post("/", async (req, res) => {
+router.post("/", authenticate, async (req, res) => {
   const user = req.body.user;
   const startSt = req.body.startSt;
   const endSt = req.body.endSt;
@@ -48,8 +55,6 @@ router.post("/", async (req, res) => {
   const seatNum = req.body.seatNum;
   const trainNum = await subway(startSt);
 
-  console.log(user, trainNum);
-
   // /**
   //  * 테스트를 위한 코드
   //  * 2시간 후 seatInfo 삭제
@@ -57,6 +62,14 @@ router.post("/", async (req, res) => {
   let d = new Date();
   d.setSeconds(d.getSeconds() + 7200);
   const r = new Date(d);
+
+  if (isSeated) {
+    // 앉아 있을 경우 열람권 +1
+    const newTicket = req.user.ticket;
+    User.findByIdAndUpdate(req.user._id, {
+      ticket: newTicket + 1,
+    }).then((e) => console.log(e));
+  }
 
   SeatInfo.create({
     user,
