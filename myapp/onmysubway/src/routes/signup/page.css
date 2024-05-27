@@ -1,0 +1,44 @@
+.signup-box {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+#text-signup {
+    text-align: center;
+    margin-bottom: 7vmax;
+}
+
+.signup-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7vmax;
+}
+
+.signup-input-group > input, #signup-passwordcheck {
+    background-color: transparent;  
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #A8A6A7;
+}
+
+.passwordcheck-group {
+    position: relative;
+}
+
+#passwordcheck-icon {
+    position: absolute;
+    bottom: 25%;
+    right: 0;
+}
+
+#btn-signup-submit {
+background-color:#4461F2 ;
+  box-shadow: 0px 4px 4px rgba(0, 19, 166, 0.253);
+  font-style: italic;
+}
+#btn-signup-submit:hover {
+    font-size: large;
+}
