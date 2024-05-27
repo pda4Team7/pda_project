@@ -82,11 +82,6 @@ router.all("/logout", async (req, res, next) => {
   }
 });
 
-// router.get("/protected", authenticate, async (req, res, next) => {
-//   console.log(req.user);
-//   res.json({ data: "민감한 데이터" });
-// });
-
 // 정보 수정 (닉네임)
 router.put("/nickname", authenticate, async (req, res, next) => {
   try {
@@ -149,6 +144,35 @@ router.put("/pwd", authenticate, async (req, res, next) => {
     await user.save();
 
     res.status(200).json({ message: "비밀번호가 변경되었습니다!" });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// 열람권 사용
+router.get("/ticket", authenticate, async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ error: "유저 조회가 안됨" });
+    }
+
+    const userTicketNum = user.ticket;
+    console.log(userTicketNum);
+    if (userTicketNum < 1) {
+      return res.status(400).json({ message: "열람권이 없습니다!" });
+    }
+
+    user.ticket -= 1;
+    user.today_ticket = true;
+
+    await user.save();
+
+    res.status(200).json({
+      message: "열람권 사용 성공",
+      leftTickets: user.ticket,
+      today_ticket: user.today_ticket,
+    });
   } catch (error) {
     next(error);
   }
