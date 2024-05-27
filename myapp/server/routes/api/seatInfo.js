@@ -8,6 +8,8 @@ const {
   signInRequired,
 } = require("../../utils/auth");
 
+const subway7 = require("../../utils/subway7");
+
 const SeatInfo = require("../../models/SeatInfo");
 const User = require("../../models/User");
 
