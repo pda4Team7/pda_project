@@ -1,0 +1,89 @@
+.main-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Noto Sans KR';
+}
+
+/* -- Component1: user-navigation-tab -- */
+
+#user-nav-name {
+  font-weight: 900;
+}
+
+.user-nav-text {
+  font-size: 0.7em;
+  color: #22368C;
+}
+
+.user-navigation-tab {
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+  width: 100vw;
+  z-index: 1;
+
+  top:0;
+  background-color: #F6F6F6;
+  box-shadow: 0px 6px 10px 1px #00000028;
+}
+
+.user-image {
+  width: 100%;
+  max-width: 70px;
+}
+
+.user-profile-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+}
+
+#btn-my-info {
+  min-width: 8vh;
+  font-size: 0.7em;
+  background-color: #22368C;
+  border: none;
+  /* white-space: normal;
+  word-wrap: break-word; */
+}
+
+
+/* -- Component2: subway-selection -- */
+.subway-selection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #EAEAEA; 
+  z-index: 0; 
+}
+
+.subway-select-group {
+  margin-top: 3vmax;
+  width: 90vmin;
+}
+
+#subway-select-text {
+  font-weight: 800;
+}
+
+.subway-select-number {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1em;
+}
+
+.subway-direction-group {
+  display: flex;
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
+  font-size: small;
+  font-weight: 480;
+}
+
+#sub-dir-0, #sub-dir-1 {
+
+  flex: 1;
+  text-align: center;
+}
