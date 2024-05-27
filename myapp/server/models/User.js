@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
   // 열람권
   ticket: {
     type: Number,
-    default: 0,
+    default: 5,
   },
   // 열람권 사용 여부
   today_ticket: {
