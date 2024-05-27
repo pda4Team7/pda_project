@@ -52,10 +52,10 @@ router.post("/", async (req, res) => {
 
   // /**
   //  * 테스트를 위한 코드
-  //  * 10초 후 삭제 의미s
+  //  * 2시간 후 seatInfo 삭제
   //  */
   let d = new Date();
-  d.setSeconds(d.getSeconds() + 10);
+  d.setSeconds(d.getSeconds() + 7200);
   const r = new Date(d);
 
   SeatInfo.create({
