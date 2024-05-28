@@ -5,35 +5,29 @@ import { serverLogin } from "~/apis/auth.js";
 
 const Login = () => {
   // login을 시도하는 userEmail과 usePassword
-  const [usernickname, setUserNickname] = useState('');
-  const [userpassword, setUserPassword] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [password, setPassword] = useState('');
   // login에 성공한 user의 Email과 Password 정보
   const [user, setUser] = useState(null);
   
-  // test용 user 로그인 처리
-  useEffect(() =>
-    setUser({
-    nickname: "hicoldegg",
-    password: "1d#dsfjk@!fdsf",
-  }),[]);
-
   // 로그인 버튼을 누르면 호출되는 함수
   const handleLogin = (event) => {
+    // Form이 새로고침되기 때문에 새로고침을 막고 로그인 정보를 보냄
     event.preventDefault();    
-    console.log('Nickname:', usernickname);
-    console.log('Password:', userpassword);
+    console.log('Nickname:', nickname);
+    console.log('Password:', password);
 
     // serverLogin 함수를 통해 DB에 저장되어 있는 User 정보와 일치하는지 request 요청을 보내고,
     // 응답받은 데이터로 로그인된 user의 정보를 가져온다.
-    // try {
-    //   severLogin({useremail,userpassword}).then((auth_data)=>{
-    //   console.log('Login 성공, User 정보: ', auth_data);
-    //   // 로그인 성공 후 User 정보 설정
-    //   setUser(auth_data);}) 
-    //   // **로그인 실패 후 => 이어서 코드 작성!
-    // } catch (error) {
-    //     console.error('Login 실패, Error 출력: ', error);
-    // }
+    try {
+      serverLogin({nickname,password}).then((auth_data)=>{
+      console.log('Login 성공, User 정보: ', auth_data);
+      // 로그인 성공 후 User 정보 설정
+      setUser(auth_data);}) 
+      // **로그인 실패 후 => 이어서 코드 작성!
+    } catch (error) {
+        console.error('Login 실패, Error 출력: ', error);
+    }
   };
 
 
@@ -56,16 +50,16 @@ const Login = () => {
             type="text"
             placeholder="Enter Email"
             style={{fontStyle : "italic"}}
-            value={usernickname}
-            onChange={(e) => setUserEmail(e.target.value)}
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Control className='login-input'       
             type="password"
             placeholder="●●●●●●●●"
-            value={userpassword}
-            onChange={(e) => setUserPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
         </div>

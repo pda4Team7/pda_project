@@ -39,7 +39,7 @@ const MainContent = () => {
                                     Log In
                                 </Link>
                             </Button>
-                            <Button variant="primary"id="btn-main-register">
+                            <Button variant="primary" id="btn-main-register">
                                 <Link to="/signup" style={{ textDecoration: 'none', color: '#4461F2' }}>
                                     Sign Up
                                 </Link>
