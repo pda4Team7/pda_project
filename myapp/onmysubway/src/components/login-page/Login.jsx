@@ -75,7 +75,7 @@ const Login = () => {
           Log in
           {user ? (<Link to='/main'></Link>) : (null)}
         </Button>
-        <Button id='btn-login-register' variant="primary" onClick={gotosignup}>
+        <Button id='btn-login-register' variant="light" onClick={gotosignup}>
           Sign up
         </Button>
         </div>

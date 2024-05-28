@@ -34,12 +34,12 @@ const MainContent = () => {
                         <h2 id="main-title">Main Title</h2>
                         {/* 로그인 및 회원가입 버튼 */}
                         <div className="main-btn-group">
-                            <Button id="btn-main-login">
+                            <Button variant="primary" id="btn-main-login">
                                 <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
                                     Log In
                                 </Link>
                             </Button>
-                            <Button id="btn-main-register">
+                            <Button variant="primary"id="btn-main-register">
                                 <Link to="/signup" style={{ textDecoration: 'none', color: '#4461F2' }}>
                                     Sign Up
                                 </Link>
