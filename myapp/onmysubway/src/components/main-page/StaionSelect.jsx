@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import UserInfo from "./UserInfo";
 
 export default function StaionSelect({
   color,
@@ -7,6 +9,10 @@ export default function StaionSelect({
   arr,
   setArr,
 }) {
+  // 모달창 띄울지 말지 결정하는 State
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleOpen = () => setShow(true);
   // 이후에 이건 서버에서 받아올 것
   const stations = [
     {
@@ -220,7 +226,7 @@ export default function StaionSelect({
   ];
 
   return (
-    <div className="station-select-container">
+    <div>
       {stations.map((elem, i) => (
         <div
           className="total-station-container"
@@ -276,6 +282,12 @@ export default function StaionSelect({
           )}
         </div>
       ))}
+      {arr !== null && depart !== null ? (
+        <Button variant="primary" onClick={handleOpen} className="addInfoBtn">
+          추가 정보 입력하러 가기
+        </Button>
+      ) : null}
+      <UserInfo show={show} handleClose={handleClose} />
     </div>
   );
 }
