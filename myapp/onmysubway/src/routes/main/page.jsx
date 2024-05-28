@@ -35,13 +35,12 @@ export default function MainPage() {
             <div className="user-nav-text">남은 열람권 수를 확인 해보세요.</div>
           </div>
           <div>
-            <Button
-              as="input"
+            <Button 
+              // as="input"
               type="submit"
-              value={`내 정보\n확인`}
-              id="btn-my-info"
-            />{" "}
-            <Link to="/"></Link>
+              // value={`내 정보\n확인`}              
+            >{" "}
+            <Link to="/info" id="btn-my-info" style={{ textDecoration: 'none', color: 'inherit' }}>{`내 정보\n확인`}</Link></Button>
           </div>
         </section>
       </nav>

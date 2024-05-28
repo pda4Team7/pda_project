@@ -41,10 +41,12 @@
 }
 
 #btn-my-info {
-  min-width: 8vh;
   font-size: 0.7em;
-  background-color: #22368c;
+  /* background-color: #22368c; */
   border: none;
+  white-space: pre-line; 
+  text-align: center; 
+  display: inline-block;
   /* white-space: normal;
   word-wrap: break-word; */
 }
