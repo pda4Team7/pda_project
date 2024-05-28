@@ -18,16 +18,21 @@ const Login = () => {
     // 응답받은 데이터로 로그인된 user의 정보를 가져온다.
     try {
       serverLogin({nickname,password}).then((auth_data)=>{
-      console.log('Login 성공, User 정보: ');
-      // 로그인 성공 후 User 정보 설정
-      setUser({auth_data});
-      console.log(user);
-      // 로그인 성공 후 main 페이지로 리다이렉션
-      navigate('/main');
+      if (auth_data) {
+        console.log(auth_data)
+        console.log('Login 성공, User 정보: ');
+        // 로그인 성공 후 User 정보 설정
+        setUser({auth_data});
+        // console.log(user);
+        // 로그인 성공 후 main 페이지로 리다이렉션
+        navigate('/main');
+      } else {
+        console.log("로그인 실패")
+      }      
     })
       // **로그인 실패 후 => 이어서 코드 작성!
     } catch (error) {
-        console.error('Login 실패, Error 출력: ', error);
+        console.error(error);
     }
   };
 

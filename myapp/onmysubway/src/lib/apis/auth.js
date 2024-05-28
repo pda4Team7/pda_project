@@ -7,12 +7,19 @@ const service = axios.create({
 
 // 로그인 요청
 export async function serverLogin({nickname, password}){
-    console.log({nickname,password})
+    try{
+    // console.log({nickname,password})
     const resp = await service.post('/signin',{
         nickname: nickname,
         password: password
     });
+
     return resp.data;
+
+    } catch(error) {
+    console.log("login실패")
+    throw error;
+    }    
 }
 
 // 회원가입 요청
