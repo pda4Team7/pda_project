@@ -5,7 +5,7 @@ const seatInfoSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: [true, "사용자 ID 값이 없습니다."],
-    ref: "User",
+    ref: "user",
   },
   // 출발역
   startSt: {
