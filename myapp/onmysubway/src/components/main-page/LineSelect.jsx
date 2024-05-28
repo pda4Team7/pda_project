@@ -18,6 +18,7 @@ export default function LineSelect({ setLine, setColor }) {
       <div className="subway-select-number-row">
         {total_line.map((elem, i) => (
           <div
+            key={"subway-select-number-row " + i}
             className="subway-line-circle"
             style={{ backgroundColor: elem.color }}
             onClick={() => {

@@ -8,7 +8,7 @@ const service = axios.create({
 
 // 로그인 요청
 export async function serverLogin({nickname, password}){
-    // console.log({nickname,password})
+    console.log({nickname,password})
     const resp = await service.post('/signin',{
         nickname: nickname,
         password: password
@@ -31,5 +31,6 @@ export async function serverUserInfo(){
     const resp = await service.get('/detail', {
         withCredentials: true
       });
+    console.log(resp.data)
     return resp.data;
 }

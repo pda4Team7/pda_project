@@ -5,7 +5,9 @@
 
 .info-box{    
     margin: 0 auto;
-    width: 60vmin;
+    padding: 5vmax;
+    width: 80vmin;
+    max-width: 500px;
     background-color: white;
     box-shadow: 0px 6px 10px 0px #0000000d;
 
@@ -14,4 +16,25 @@
     top: 50%;
     transform: translateY(-50%);
     border-radius: 12px;
+}
+
+.user-info-section > section {
+    margin-top: 3vh;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom : 3vh;
+}
+
+.vertical-line {
+    width: 60%;               
+    height: 0.5px;            
+    background-color: #C4C4C4;
+    margin: 0 auto;  
+}
+
+.user-ticket-section {
 }
