@@ -73,7 +73,7 @@ router.post("/signin", async (req, res, next) => {
     });
 
     res.status(201).json(user);
-  } catch (error) {
+  } catch (err) {
     console.error(err);
     res.status(400);
     next(err);

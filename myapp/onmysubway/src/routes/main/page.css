@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 
 /* -- Component1: user-navigation-tab -- */
@@ -14,7 +14,7 @@
 
 .user-nav-text {
   font-size: 0.7em;
-  color: #22368C;
+  color: #22368c;
 }
 
 .user-navigation-tab {
@@ -23,8 +23,8 @@
   width: 100vw;
   z-index: 1;
 
-  top:0;
-  background-color: #F6F6F6;
+  top: 0;
+  background-color: #f6f6f6;
   box-shadow: 0px 6px 10px 1px #00000028;
 }
 
@@ -41,22 +41,25 @@
 }
 
 #btn-my-info {
-  min-width: 8vh;
   font-size: 0.7em;
-  background-color: #22368C;
+  /* background-color: #22368c; */
   border: none;
+  white-space: pre-line; 
+  text-align: center; 
+  display: inline-block;
   /* white-space: normal;
   word-wrap: break-word; */
 }
 
-
 /* -- Component2: subway-selection -- */
 .subway-selection {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  background-color: #EAEAEA; 
-  z-index: 0; 
+  background-color: #eaeaea;
+  z-index: 0;
 }
 
 .subway-select-group {
@@ -70,6 +73,7 @@
 
 .subway-select-number {
   padding: 10px;
+  margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 1em;
 }
@@ -82,8 +86,166 @@
   font-weight: 480;
 }
 
-#sub-dir-0, #sub-dir-1 {
+/* 지하철 호선 선택하는 원 */
+.subway-select-number-row {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: nowrap; /* 자식 요소가 한 줄에 모두 표시되도록 */
+  overflow-x: auto; /* 수평 스크롤을 생성하기 위해 auto로 설정 */
+}
 
+.subway-line-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+#sub-dir-0,
+#sub-dir-1 {
   flex: 1;
   text-align: center;
+}
+
+/* 출발역 & 도착역 선택 창*/
+/* 1. 배경 line 두개 */
+.subway-destination-select-group {
+  display: block;
+  position: relative;
+  height: calc(100vh - 200px);
+  width: 90vmin;
+  overflow-y: auto;
+}
+
+/* 2. 역 선택 전체 컨테이너*/
+.total-station-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 각 역 div*/
+.station-item {
+  width: 53.7%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+
+/* 동그라미 */
+.station-select {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.station-select-line {
+  width: 7px;
+  height: 100%;
+}
+
+.station-select-circle {
+  width: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* 지하철역 정보 */
+.station-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.station-number {
+  background-color: white;
+  width: 50px;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.station-name {
+  font-size: 15px;
+}
+
+/* 3.  출발역, 도착역 선택창*/
+.total-station-container {
+  position: relative;
+}
+.select-depart-arr {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 5px;
+  background-color: rgba(168, 166, 167, 0.67);
+  border-radius: 6px;
+  gap: 5px;
+  font-size: 10px;
+  position: absolute;
+  top: 35%;
+}
+
+.left {
+  right: 85%;
+}
+
+.right {
+  left: 85%;
+}
+
+/* 유저 입력창으로 넘어가는 모달 */
+.addInfoBtn {
+  position: fixed;
+  right: 20vw;
+  bottom: 30px;
+  z-index: 10;
+  width: 60vw;
+  height: 8vh;
+  font-size: 20px;
+}
+
+/* 유저 모달 창*/
+.train-number {
+  display: flex;
+  flex-direction: column;
+}
+
+.train-number .form-label {
+  margin-bottom: 2px;
+}
+.train-number .form-control,
+.train-number div {
+  margin-bottom: 15px;
+}
+.user-state div {
+  display: flex;
+  justify-content: space-between;
+}
+.user-state-item{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-left: 5px;
+}
+.selected {
+  border: 2px solid #007bff; /* 원하는 테두리 색으로 변경 */
+  padding: 10px;
+  border-radius: 5px;
 }

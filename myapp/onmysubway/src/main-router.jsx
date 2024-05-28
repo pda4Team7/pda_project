@@ -1,9 +1,10 @@
-import React from "react";
-import { createBrowserRouter } from "react-router-dom";
-import MainPage from "~/routes/main/page";
-import LandingPage from "~/routes/landing/page";
-import LoginPage from "~/routes/login/page";
-import SignUpPage from "~/routes/signup/page";
+import React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import MainPage from '~/routes/main/page';
+import LandingPage from '~/routes/landing/page';
+import LoginPage from '~/routes/login/page';
+import SignUpPage from '~/routes/signup/page';
+import InfoPage from '~/routes/info/page';
 
 import CompletePage from "~/routes/seatInfo/completePage";
 import SeatInfoPage from "~/routes/seatInfo/page";
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/seatInfo",
     element: <SeatInfoPage />,
+  },
+  {
+    path: '/info',
+    element: <InfoPage />,
   },
 ]);
 export default router;
