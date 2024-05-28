@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function StaionSelect({ color }) {
+export default function StaionSelect({
+  color,
+  depart,
+  setDepart,
+  arr,
+  setArr,
+}) {
   // 이후에 이건 서버에서 받아올 것
   const stations = [
     {
@@ -212,42 +218,62 @@ export default function StaionSelect({ color }) {
       number: 752,
     },
   ];
+
   return (
     <div className="station-select-container">
       {stations.map((elem, i) => (
-        <div className="station-item">
-          <div className="station-select">
-            <div
-              className="station-select-line"
-              style={{ border: "4px solid " + color, backgroundColor: color }}
-            ></div>
-            <div
-              className="station-select-circle"
-              style={{ border: "4px solid " + color }}
-            ></div>
-          </div>
-          <div className="station-info">
-            <div
-              key={"station-number" + i}
-              className="station-number"
-              style={{ border: "4px solid " + color }}
-            >
-              {elem.number}
+        <div
+          className="total-station-container"
+          key={"total-station-container " + i}
+        >
+          {/* 모달 */}
+          {depart === elem.number && (
+            <div className="select-depart-arr left">출발역</div>
+          )}
+          <div className="station-item">
+            <div className="station-select">
+              <div
+                className="station-select-line"
+                style={{ border: "4px solid " + color, backgroundColor: color }}
+              ></div>
+              <div
+                className="station-select-circle"
+                style={{ border: "4px solid " + color }}
+                onClick={() => {
+                  setDepart(elem.number);
+                }}
+              ></div>
             </div>
-            <div key={"station-name" + i} className="station-name">
-              {elem.name}
+            <div className="station-info">
+              <div
+                key={"station-number" + i}
+                className="station-number"
+                style={{ border: "4px solid " + color }}
+              >
+                {elem.number}
+              </div>
+              <div key={"station-name" + i} className="station-name">
+                {elem.name}
+              </div>
+            </div>
+            <div className="station-select">
+              <div
+                className="station-select-line"
+                style={{ border: "4px solid " + color, backgroundColor: color }}
+              ></div>
+              <div
+                className="station-select-circle"
+                style={{ border: "4px solid " + color }}
+                onClick={() => {
+                  setArr(elem.number);
+                }}
+              ></div>
             </div>
           </div>
-          <div className="station-select">
-            <div
-              className="station-select-line"
-              style={{ border: "4px solid " + color, backgroundColor: color }}
-            ></div>
-            <div
-              className="station-select-circle"
-              style={{ border: "4px solid " + color }}
-            ></div>
-          </div>
+          {/* 모달 */}
+          {arr === elem.number && (
+            <div className="select-depart-arr right">도착역</div>
+          )}
         </div>
       ))}
     </div>

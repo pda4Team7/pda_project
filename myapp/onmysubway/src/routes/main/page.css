@@ -74,7 +74,6 @@
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 1em;
-  width: 500px;
 }
 
 .subway-direction-group {
@@ -99,8 +98,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 100%;
   border-radius: 50%;
   cursor: pointer;
   font-size: 18px;
@@ -116,7 +114,7 @@
 }
 
 /* 출발역 & 도착역 선택 창*/
-/* 배경 line 두개 */
+/* 1. 배경 line 두개 */
 .subway-destination-select-group {
   display: block;
   position: relative;
@@ -125,8 +123,8 @@
   overflow-y: auto;
 }
 
-/* 역 선택 전체 컨테이너*/
-.station-select-container {
+/* 2. 역 선택 전체 컨테이너*/
+.total-station-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,9 +177,33 @@
   width: 50px;
   text-align: center;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .station-name {
-  font-size: 17px;
+  font-size: 15px;
+}
+
+/* 3.  출발역, 도착역 선택창*/
+.total-station-container {
+  position: relative;
+}
+.select-depart-arr {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 5px;
+  background-color: rgba(168, 166, 167, 0.67);
+  border-radius: 6px;
+  gap: 5px;
+  font-size: 10px;
+  position: absolute;
+  top: 35%;
+}
+
+.left {
+  right: 85%;
+}
+
+.right {
+  left: 85%;
 }
