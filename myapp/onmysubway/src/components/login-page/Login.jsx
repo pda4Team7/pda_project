@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Image } from 'react-bootstrap';
+import { Form, Button, Image, Modal} from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { serverLogin } from "~/apis/auth.js";
 
@@ -9,6 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   // login에 성공한 user의 Email과 Password 정보
   const [user, setUser] = useState({});
+  // login에 실패한 user에게 모달창
+  const [showloginfail, setShowLoginFail] = useState(false);
   
   // 로그인 버튼을 누르면 호출되는 함수
   const handleLogin = (event) => {
@@ -27,9 +29,12 @@ const Login = () => {
     })
       // **로그인 실패 후 => 이어서 코드 작성!
     } catch (error) {
-        console.error('Login 실패, Error 출력: ', error);
+        console.log(error);
+        setShowLoginFail(true);
     }
   };
+
+  const handleCloseModal = () => setShowLoginFail(false);
 
 
   // signup 버튼을 누르면 호출되는 함수
@@ -75,6 +80,7 @@ const Login = () => {
         </Button>
         </div>
       </Form>
+      <Modal show={showloginfail} handleClose={handleCloseModal} />
       </div>
     </div>
   );
