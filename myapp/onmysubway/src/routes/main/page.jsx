@@ -13,17 +13,14 @@ export default function MainPage() {
   };
   const user = test_user;
 
-  // ** 추후 지하철 2가지 방면 정보를 가져오기!
-  const test_right_go = "장암";
-  const test_left_go = "석남(거북시장)";
-  const subway_direction = [test_left_go, test_right_go];
-
   // ** 추후 7호선 전체 역 이름 정보를 가져오기!
   const test_station_name = ["굴포천", "삼산체육관", "상동", "부천시청"];
   const station_name = test_station_name;
 
   const [line, setLine] = useState(null);
-  const [color, setColor] = useState();
+  const [color, setColor] = useState(null);
+  const [depart, setDepart] = useState(null);
+  const [arr, setArr] = useState(null);
 
   return (
     <div className="main-page">
@@ -50,15 +47,20 @@ export default function MainPage() {
           <p id="subway-select-text">내가 탄 열차의 정보를 선택 해주세요.</p>
           <LineSelect setLine={setLine} setColor={setColor} />
           <div className="subway-direction-group">
-            {subway_direction.map((elem, i) => (
-              <div id={"sub-dir-" + i} key={"sub-dir-" + i}>
-                {elem}
-              </div>
-            ))}
+            <div id="sub-dir-0">출발역 선택</div>
+            <div id="sub-dir-1">도착역 선택</div>
           </div>
         </section>
         <section className="subway-destination-select-group">
-          {line !== null ? <StaionSelect color={color} /> : null}
+          {line !== null ? (
+            <StaionSelect
+              color={color}
+              depart={depart}
+              setDepart={setDepart}
+              arr={arr}
+              setArr={setArr}
+            />
+          ) : null}
         </section>
       </nav>
     </div>
