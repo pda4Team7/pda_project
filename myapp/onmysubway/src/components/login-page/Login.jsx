@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button, Image } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { serverLogin } from "~/apis/auth.js";
+import Cookies from 'js-cookie';
 
 const Login = () => {
   // login을 시도하는 userEmail과 usePassword
@@ -20,11 +21,10 @@ const Login = () => {
     // serverLogin 함수를 통해 DB에 저장되어 있는 User 정보와 일치하는지 request 요청을 보내고,
     // 응답받은 데이터로 로그인된 user의 정보를 가져온다.
     try {
+      console.log(Cookies.get());
       serverLogin({nickname,password}).then((auth_data)=>{
-      console.log('Login 성공, User 정보: ');
       // 로그인 성공 후 User 정보 설정
-      // setUser({auth_data});
-      console.log(user);
+      Cookies.set('token', auth_data.token);
       // 로그인 성공 후 main 페이지로 리다이렉션
       navigate('/main');
     })

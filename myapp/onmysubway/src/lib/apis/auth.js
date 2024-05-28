@@ -1,6 +1,7 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
-const BASE_URL = "http://localhost:3000/api/user";
+const BASE_URL = "/api/user";
 const service = axios.create({
     baseURL: BASE_URL
 })
@@ -27,6 +28,8 @@ export async function serverSignUp({nickname, password}){
 
 // 유저 정보 요청
 export async function serverUserInfo(){
-    const resp = await service.get('/detail');
-    return resp;
+    const resp = await service.get('/detail', {
+        withCredentials: true
+      });
+    return resp.data;
 }
