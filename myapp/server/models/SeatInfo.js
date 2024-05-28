@@ -17,6 +17,10 @@ const seatInfoSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // 방면
+  direction: {
+    type: Number,
+  },
   // 열차 번호
   trainNum: {
     type: String,
