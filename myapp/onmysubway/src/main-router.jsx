@@ -4,6 +4,7 @@ import MainPage from '~/routes/main/page';
 import LandingPage from '~/routes/landing/page';
 import LoginPage from '~/routes/login/page';
 import SignUpPage from '~/routes/signup/page';
+import InfoPage from '~/routes/info/page';
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
 {
     path: '/signup',
     element: <SignUpPage />,
+    },
+{
+    path: '/info',
+    element: <InfoPage />,
     },
 ]);
 export default router;
