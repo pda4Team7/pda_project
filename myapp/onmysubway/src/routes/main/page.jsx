@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import userimg from "~/assets/user_profile.png";
 import "./page.css";
+import LineSelect from "~/components/main-page/LineSelect";
+import StaionSelect from "~/components/main-page/StaionSelect";
 
 export default function MainPage() {
   // ** 추후 Login 페이지에 user정보를 가져오기!
@@ -20,18 +22,8 @@ export default function MainPage() {
   const test_station_name = ["굴포천", "삼산체육관", "상동", "부천시청"];
   const station_name = test_station_name;
 
-  // 총 total 호선
-  const total_line = [
-    { line: 1, color: "#263F93" },
-    { line: 2, color: "#41B353" },
-    { line: 3, color: "#EF6C1D" },
-    { line: 4, color: "#2FA0DB" },
-    { line: 5, color: "#883FDB" },
-    { line: 6, color: "#B44F19" },
-    { line: 7, color: "#697121" },
-    { line: 8, color: "#E31F6D" },
-    { line: 9, color: "#D1A43C" },
-  ];
+  const [line, setLine] = useState(null);
+  const [color, setColor] = useState();
 
   return (
     <div className="main-page">
@@ -56,18 +48,7 @@ export default function MainPage() {
       <nav className="subway-selection">
         <section className="subway-select-group">
           <p id="subway-select-text">내가 탄 열차의 정보를 선택 해주세요.</p>
-          <div className="subway-select-number">
-            <div className="subway-select-number-row">
-              {total_line.map((elem, i) => (
-                <div
-                  className="subway-line-circle"
-                  style={{ backgroundColor: elem.color }}
-                >
-                  {elem.line}
-                </div>
-              ))}
-            </div>
-          </div>
+          <LineSelect setLine={setLine} setColor={setColor} />
           <div className="subway-direction-group">
             {subway_direction.map((elem, i) => (
               <div id={"sub-dir-" + i} key={"sub-dir-" + i}>
@@ -77,7 +58,7 @@ export default function MainPage() {
           </div>
         </section>
         <section className="subway-destination-select-group">
-          <div></div>
+          {line !== null ? <StaionSelect color={color} /> : null}
         </section>
       </nav>
     </div>
