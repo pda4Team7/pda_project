@@ -11,9 +11,10 @@ const Login = () => {
   const [user, setUser] = useState({});
   // login에 실패한 user에게 모달창
   const [showloginfail, setShowLoginFail] = useState(false);
+
   
   // 로그인 버튼을 누르면 호출되는 함수
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     // Form이 새로고침되기 때문에 새로고침을 막고 로그인 정보를 보냄
     event.preventDefault();
     // serverLogin 함수를 통해 DB에 저장되어 있는 User 정보와 일치하는지 request 요청을 보내고,
@@ -22,7 +23,7 @@ const Login = () => {
       serverLogin({nickname,password}).then((auth_data)=>{
       console.log('Login 성공, User 정보: ');
       // 로그인 성공 후 User 정보 설정
-      setUser({auth_data});
+      // setUser({auth_data});
       console.log(user);
       // 로그인 성공 후 main 페이지로 리다이렉션
       navigate('/main');
