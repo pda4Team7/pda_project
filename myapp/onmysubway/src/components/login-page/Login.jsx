@@ -8,23 +8,23 @@ const Login = () => {
   const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
   // login에 성공한 user의 Email과 Password 정보
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   
   // 로그인 버튼을 누르면 호출되는 함수
   const handleLogin = (event) => {
     // Form이 새로고침되기 때문에 새로고침을 막고 로그인 정보를 보냄
-    event.preventDefault();    
-    console.log('Nickname:', nickname);
-    console.log('Password:', password);
-
+    event.preventDefault();
     // serverLogin 함수를 통해 DB에 저장되어 있는 User 정보와 일치하는지 request 요청을 보내고,
     // 응답받은 데이터로 로그인된 user의 정보를 가져온다.
     try {
       serverLogin({nickname,password}).then((auth_data)=>{
       console.log('Login 성공, User 정보: ');
       // 로그인 성공 후 User 정보 설정
-      setUser(auth_data);})
-      console.log(user)
+      setUser({auth_data});
+      console.log(user);
+      // 로그인 성공 후 main 페이지로 리다이렉션
+      navigate('/main');
+    })
       // **로그인 실패 후 => 이어서 코드 작성!
     } catch (error) {
         console.error('Login 실패, Error 출력: ', error);
