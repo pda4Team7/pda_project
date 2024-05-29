@@ -14,7 +14,7 @@ export async function postUserInfo({
   isSeated,
   clothes,
   seatNum,
-}) {
+}){
   const resp = await service.post("/", {
     user: user,
     startSt: depart,

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Image, Modal, Button } from 'react-bootstrap';
 import ttota from '~/assets/swimttota.png'
 import ttota_hi from '~/assets/ttota_hi.png'
 import { useNavigate } from 'react-router-dom';
+import { serverUserInfo } from '~/lib/apis/auth';
 
 const Finding = () => {
     // ** update된 user_destination과 리스트 명수 요청해서 받아오기 !
@@ -11,6 +12,19 @@ const Finding = () => {
     const user_destination = test_user_destination
     const howmanyseats = test_howmanyseats
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        try {
+            serverUserInfo().then((resp)=>{
+                console.log(resp.data)
+                setUser(resp.data)
+                
+            })
+        } catch (error) {
+            console.log(error)
+        }    
+    }, [])
 
     const [showModal,setShowModal] = useState(false);
     const handleModalClose = () => {
