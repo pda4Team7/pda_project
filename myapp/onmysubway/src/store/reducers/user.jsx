@@ -1,6 +1,8 @@
 // initialState
 const initialState = {
   userId: "",
+  userName: "",
+  userToken: "",
 };
 
 // Action Type
@@ -8,9 +10,9 @@ export const LOGGED_IN = "user/LOGGED_IN";
 export const LOGGED_OUT = "user/LOGGED_OUT";
 
 // Action Creator
-export const loginUser = ({ user_id, user_name }) => ({
+export const loginUser = ({ user_id, user_name, user_token }) => ({
   type: LOGGED_IN,
-  payload: { user_id, user_name },
+  payload: { user_id, user_name, user_token },
 });
 
 export const logoutUser = () => ({
@@ -25,6 +27,7 @@ function userReducer(state = initialState, action) {
         ...state,
         userId: action.payload.user_id,
         userName: action.payload.user_name,
+        userToken: action.payload.user_token,
       };
     case LOGGED_OUT:
       return { ...state, userId: "" };

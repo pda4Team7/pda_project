@@ -33,7 +33,7 @@ const Login = () => {
       // 로그인 성공 후 User 정보 설정
       if(auth_data!==false){
         dispatch(
-          loginUser({ user_id: auth_data._id, user_name: auth_data.nickname })
+          loginUser({ user_id: auth_data._id, user_name: auth_data.nickname, user_token: auth_data.token })
         );
 
         console.log(user);
