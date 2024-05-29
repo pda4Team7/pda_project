@@ -41,10 +41,12 @@
 }
 
 #btn-my-info {
-  min-width: 8vh;
   font-size: 0.7em;
-  background-color: #22368c;
+  /* background-color: #22368c; */
   border: none;
+  white-space: pre-line;
+  text-align: center;
+  display: inline-block;
   /* white-space: normal;
   word-wrap: break-word; */
 }
@@ -74,7 +76,6 @@
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 1em;
-  width: 500px;
 }
 
 .subway-direction-group {
@@ -99,8 +100,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 100%;
   border-radius: 50%;
   cursor: pointer;
   font-size: 18px;
@@ -116,7 +116,7 @@
 }
 
 /* 출발역 & 도착역 선택 창*/
-/* 배경 line 두개 */
+/* 1. 배경 line 두개 */
 .subway-destination-select-group {
   display: block;
   position: relative;
@@ -125,8 +125,8 @@
   overflow-y: auto;
 }
 
-/* 역 선택 전체 컨테이너*/
-.station-select-container {
+/* 2. 역 선택 전체 컨테이너*/
+.total-station-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,9 +179,77 @@
   width: 50px;
   text-align: center;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .station-name {
-  font-size: 17px;
+  font-size: 15px;
+}
+
+/* 3.  출발역, 도착역 선택창*/
+.total-station-container {
+  position: relative;
+}
+.select-depart-arr {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 5px;
+  background-color: rgba(168, 166, 167, 0.67);
+  border-radius: 6px;
+  gap: 5px;
+  font-size: 10px;
+  position: absolute;
+  top: 35%;
+}
+
+.left {
+  right: 85%;
+}
+
+.right {
+  left: 85%;
+}
+
+/* 유저 입력창으로 넘어가는 모달 */
+.addInfoBtn {
+  position: fixed;
+  right: 20vw;
+  bottom: 30px;
+  z-index: 10;
+  width: 60vw;
+  height: 8vh;
+  font-size: 20px;
+}
+
+/* 유저 모달 창*/
+.train-number {
+  display: flex;
+  flex-direction: column;
+}
+
+.train-number .form-label {
+  margin-bottom: 2px;
+}
+.train-number .form-control,
+.train-number div {
+  margin-bottom: 15px;
+}
+.user-state div {
+  display: flex;
+  justify-content: space-between;
+}
+.user-state-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-left: 5px;
+}
+
+.user-state-item div {
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+.selected {
+  border: 2px solid #007bff; /* 원하는 테두리 색으로 변경 */
+  border-radius: 5px;
 }

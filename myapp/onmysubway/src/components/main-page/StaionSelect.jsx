@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import UserInfo from "./UserInfo";
 
-export default function StaionSelect({ color }) {
+// 컴포넌트 이름: StaionSelect
+// 컴포넌트 역할: main page에서 출발역 / 도착역 선택, 선택 다 한 후 고객 모달창 띄워주기
+// 추후에 고객의 서있는/앉아있는 상태에 따라 handleSubmit에서 가는 navigate를 다르게 하면 될듯
+// css 파일: routes > page.css
+export default function StaionSelect({
+  color,
+  depart,
+  setDepart,
+  arr,
+  setArr,
+  trainNumber,
+  setTrainNumber,
+  userState,
+  setUserState,
+}) {
+  const navigate = useNavigate();
+
+  // 모달창 띄울지 말지 결정하는 State
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false); // 모달 창 닫음
+  const handleOpen = () => setShow(true); // 모달 창 열기
+  const handleSubmit = () => {
+    userState === "stand-state" ? setUserState(true) : setUserState(false);
+    navigate("/login"); // 일단 잘 넘어가지는지 확인을 위해 login으로 설정, 추후에 여기서 서있는 사람 ver로 갈건지, 앉아있는 사람 ver로 갈건지 정하면 됨
+  }; // 고객의 정보 넘기기
+  // 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
+
   // 이후에 이건 서버에서 받아올 것
   const stations = [
     {
@@ -212,44 +241,78 @@ export default function StaionSelect({ color }) {
       number: 752,
     },
   ];
+
   return (
-    <div className="station-select-container">
+    <div>
       {stations.map((elem, i) => (
-        <div className="station-item">
-          <div className="station-select">
-            <div
-              className="station-select-line"
-              style={{ border: "4px solid " + color, backgroundColor: color }}
-            ></div>
-            <div
-              className="station-select-circle"
-              style={{ border: "4px solid " + color }}
-            ></div>
-          </div>
-          <div className="station-info">
-            <div
-              key={"station-number" + i}
-              className="station-number"
-              style={{ border: "4px solid " + color }}
-            >
-              {elem.number}
+        <div
+          className="total-station-container"
+          key={"total-station-container " + i}
+        >
+          {/* 모달 */}
+          {depart === elem.number && (
+            <div className="select-depart-arr left">출발역</div>
+          )}
+          <div className="station-item">
+            <div className="station-select">
+              <div
+                className="station-select-line"
+                style={{ border: "4px solid " + color, backgroundColor: color }}
+              ></div>
+              <div
+                className="station-select-circle"
+                style={{ border: "4px solid " + color }}
+                onClick={() => {
+                  setDepart(elem.number);
+                }}
+              ></div>
             </div>
-            <div key={"station-name" + i} className="station-name">
-              {elem.name}
+            <div className="station-info">
+              <div
+                key={"station-number" + i}
+                className="station-number"
+                style={{ border: "4px solid " + color }}
+              >
+                {elem.number}
+              </div>
+              <div key={"station-name" + i} className="station-name">
+                {elem.name}
+              </div>
+            </div>
+            <div className="station-select">
+              <div
+                className="station-select-line"
+                style={{ border: "4px solid " + color, backgroundColor: color }}
+              ></div>
+              <div
+                className="station-select-circle"
+                style={{ border: "4px solid " + color }}
+                onClick={() => {
+                  setArr(elem.number);
+                }}
+              ></div>
             </div>
           </div>
-          <div className="station-select">
-            <div
-              className="station-select-line"
-              style={{ border: "4px solid " + color, backgroundColor: color }}
-            ></div>
-            <div
-              className="station-select-circle"
-              style={{ border: "4px solid " + color }}
-            ></div>
-          </div>
+          {/* 모달 */}
+          {arr === elem.number && (
+            <div className="select-depart-arr right">도착역</div>
+          )}
         </div>
       ))}
+      {arr !== null && depart !== null ? (
+        <Button variant="primary" onClick={handleOpen} className="addInfoBtn">
+          추가 정보 입력하러 가기
+        </Button>
+      ) : null}
+      <UserInfo
+        show={show}
+        trainNumber={trainNumber}
+        setTrainNumber={setTrainNumber}
+        userState={userState}
+        setUserState={setUserState}
+        handleClose={handleClose}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }
