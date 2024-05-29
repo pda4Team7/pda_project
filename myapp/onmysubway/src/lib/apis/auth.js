@@ -23,19 +23,43 @@ export async function serverLogin({nickname, password}){
 }
 // 회원가입 요청
 export async function serverSignUp({ nickname, password }) {
-  // console.log({nickname,password})
-  const resp = await service.post("/signup", {
-    nickname: nickname,
-    password: password,
-  });
-  return resp.data;
+    try {
+        const resp = await service.post("/signup", {
+            nickname: nickname,
+            password: password,
+          });
+          return resp.data;
+    } catch(err){
+        return false;
+    }
+  
+ 
 }
 
 // 유저 정보 요청
 export async function serverUserInfo(){
-    const resp = await service.get('/detail', {
+    try {
+        const resp = await service.get('/detail', {
+            withCredentials: true
+          });
+        console.log(resp.data)
+        return resp.data;
+    } catch(err) {
+        return false;
+    }
+    
+}
+
+// 로그아웃
+export async function serverLogout(){
+    try{
+    const resp = await service.post('/logout', {
         withCredentials: true
-      });
-    console.log(resp.data)
+    });
+    console.log(resp.data);
     return resp.data;
+    } catch(err){
+        return false;
+    }
+   
 }

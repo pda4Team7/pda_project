@@ -1,14 +1,21 @@
 import Cookies from 'js-cookie';
 import React, { useEffect, useState } from 'react';
-import { Image, Form } from 'react-bootstrap';
+import { Image, Form, Button } from 'react-bootstrap';
 import userimg from "~/assets/user_profile.png";
 import userticket from "~/assets/user_tickets.svg";
-import { serverUserInfo } from '~/lib/apis/auth';
+import { serverUserInfo, serverLogout } from '~/lib/apis/auth';
+import { useNavigate } from 'react-router-dom';
 
 const MyInfo = () => {    
     // 첫 렌더링시 user의 정보를 get요청 보내서 가져옴    
     const [user,setUser] = useState(null);
     const [password,setPassword] = useState('');
+    const [pw_before,setPasswordBefore]= useState('');
+    const [pw_after,setPasswordAfter]= useState('');
+    const [pwchange, setPasswordChange] = useState(false);
+    const [pwcorrect, setPasswordCorrect] = useState(false);
+    const navigate = useNavigate();
+
     useEffect(() => {
         try {
             serverUserInfo().then((data)=>{
@@ -21,11 +28,7 @@ const MyInfo = () => {
     }, [])
     console.log(password)
     // !!** password 해싱 전 값 가져오는 법 확인하고 수정하기
-
-    const [pw_before,setPasswordBefore]= useState('');
-    const [pw_after,setPasswordAfter]= useState('');
-    const [pwchange, setPasswordChange] = useState(false);
-    const [pwcorrect, setPasswordCorrect] = useState(false);
+    
 
     // 현재 비밀번호와 다른 비밀번호로 수정해야 함
     // ** 비밀번호 조건 추가되면 코드 수정 !
@@ -47,6 +50,16 @@ const MyInfo = () => {
         setPasswordCorrect(false);
     }
     }, [pw_before]);
+
+    // 로그아웃 버튼을 누르면 호출되는 함수
+    const handlelogout = async () => {
+            serverLogout().then((success)=>{
+                console.log(success)
+                if(success!==false){
+                    navigate('/')
+                }
+            })
+    }
     
     // 응답 전에 user 정보를 렌더링하려고 하면 null인 상태에서 렌더링이 먼저 됨
     // => user가 null인 경우는 Loading화면 표시
@@ -93,7 +106,7 @@ const MyInfo = () => {
 
                 <section className='user-logout-section'> 
                     <Image src={userticket}></Image>
-                    <p> 로그아웃 </p>
+                    <Button onClick={handlelogout}> 로그아웃 </Button>
                 </section>
             </section>
         </div>
