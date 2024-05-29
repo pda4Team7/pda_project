@@ -1,9 +1,10 @@
-.main-container{
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.main-container {
+  position: relative;
+  top: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .seat-info-title {
@@ -32,4 +33,34 @@
 
 .seat-info-text {
   width: 35vw;
+}
+
+/* 모달창 */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+/* 주의 문구 */
+.modal-body p {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+/* 자리 위치 그림 */
+.seat-title {
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.seat-grid {
+  align-items: center;
+}
+.seat-detail-item {
+  background-color: lightblue;
+  font-weight: bold;
+}
+.seat-detail-item span {
+  font-weight: bold;
+  color: #22368c;
 }
