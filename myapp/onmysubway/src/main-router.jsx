@@ -9,7 +9,7 @@ import InfoPage from "~/routes/info/page";
 import CompletePage from "~/routes/seatInfo/completePage";
 import SeatInfoPage from "~/routes/seatInfo/page";
 import StandingPage from "~/routes/standing/page";
-import SitListPage from "~/routes/sitList/page";
+import SeatListPage from "~/routes/standing/list/page";
 
 const router = createBrowserRouter([
   {
@@ -47,11 +47,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/standing",
-    element: <StandingPage />,
-  },
-  {
-    path: "/sitList",
-    element: <SitListPage />,
+    children: [
+      {
+        path: "",
+        index: true,
+        element: <StandingPage />,
+      },
+      {
+        path: "list",
+        element: <SeatListPage />,
+      },
+    ],
   },
 ]);
 export default router;
