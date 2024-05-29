@@ -9,8 +9,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   // login에 성공한 user의 Email과 Password 정보
   const [user, setUser] = useState({});
-  // login에 실패한 user에게 모달창
-  const [showloginfail, setShowLoginFail] = useState(false);
   
   // 로그인 버튼을 누르면 호출되는 함수
   const handleLogin = (event) => {
@@ -20,22 +18,23 @@ const Login = () => {
     // 응답받은 데이터로 로그인된 user의 정보를 가져온다.
     try {
       serverLogin({nickname,password}).then((auth_data)=>{
-      console.log('Login 성공, User 정보: ');
       // 로그인 성공 후 User 정보 설정
-      setUser({auth_data});
-      console.log(user);
-      // 로그인 성공 후 main 페이지로 리다이렉션
-      navigate('/main');
+      if(auth_data!==false){
+        setUser({auth_data});
+        console.log(user);
+        // 로그인 성공 후 main 페이지로 리다이렉션
+        navigate('/main');
+      } else {
+        alert("닉네임과 비밀번호를 확인해주세요.")
+      }
+        
     })
       // **로그인 실패 후 => 이어서 코드 작성!
     } catch (error) {
-        console.log(error);
-        setShowLoginFail(true);
+        console.log("dsf",error);
+        
     }
   };
-
-  const handleCloseModal = () => setShowLoginFail(false);
-
 
   // signup 버튼을 누르면 호출되는 함수
   // navigate를 통해 signup 페이지로 이동
@@ -80,7 +79,6 @@ const Login = () => {
         </Button>
         </div>
       </Form>
-      <Modal show={showloginfail} handleClose={handleCloseModal} />
       </div>
     </div>
   );
