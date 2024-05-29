@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import UserInfo from "./UserInfo";
+// import postUserInfo from "~/lib/apis/userInfo";
 
 // 컴포넌트 이름: StaionSelect
 // 컴포넌트 역할: main page에서 출발역 / 도착역 선택, 선택 다 한 후 고객 모달창 띄워주기
@@ -18,6 +20,7 @@ export default function StaionSelect({
   userState,
   setUserState,
 }) {
+  const user = useSelector((state) => state.user.userId);
   const navigate = useNavigate();
 
   // 모달창 띄울지 말지 결정하는 State
@@ -26,7 +29,20 @@ export default function StaionSelect({
   const handleOpen = () => setShow(true); // 모달 창 열기
   const handleSubmit = () => {
     userState === "stand-state" ? setUserState(true) : setUserState(false);
-    navigate("/login"); // 일단 잘 넘어가지는지 확인을 위해 login으로 설정, 추후에 여기서 서있는 사람 ver로 갈건지, 앉아있는 사람 ver로 갈건지 정하면 됨
+    console.log(userState);
+    // 1. 만일 서 있는 사람이라면 -> DB에 넘김
+    if (userState !== true) {
+      navigate("/seatInfo", {
+        user: { user },
+        startSt: { depart },
+        endSt: { arr },
+        compartment: { trainNumber },
+      });
+    }
+    // 2. 만일 앉아있는 사람이라면, -> 다음 페이지로 넘김
+    else {
+      navigate("/login");
+    } // 일단 잘 넘어가지는지 확인을 위해 login으로 설정, 추후에 여기서 서있는 사람 ver로 갈건지, 앉아있는 사람 ver로 갈건지 정하면 됨
   }; // 고객의 정보 넘기기
   // 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
 

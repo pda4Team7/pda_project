@@ -13,7 +13,7 @@ export default function MainPage() {
   const [line, setLine] = useState(null); // 선택한 호선 (ex. 7호선)
   const [color, setColor] = useState(null); // 선택한 호선의 색
   const [depart, setDepart] = useState(null); // 고객의 출발역
-  const [arr, setArr] = useState(null);  // 고객의 도착역
+  const [arr, setArr] = useState(null); // 고객의 도착역
   const [userState, setUserState] = useState(null); // 고객의 현재 상태 (서있음 or 앉아있음)
   const [trainNumber, setTrainNumber] = useState(""); // 고객의 현재 칸
 
@@ -59,9 +59,9 @@ export default function MainPage() {
               setDepart={setDepart}
               arr={arr}
               setArr={setArr}
-              trainNumber={trainNumber} 
+              trainNumber={trainNumber}
               setTrainNumber={setTrainNumber}
-              userState={userState} 
+              userState={userState}
               setUserState={setUserState}
             />
           ) : null}
