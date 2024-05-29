@@ -58,8 +58,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #eaeaea;
   z-index: 0;
+  background-color: #eaeaea;
 }
 
 .subway-select-group {
@@ -121,8 +121,9 @@
   display: block;
   position: relative;
   height: calc(100vh - 200px);
-  width: 90vmin;
+  width: 100vmin;
   overflow-y: auto;
+  background-color: #fff;
 }
 
 /* 2. 역 선택 전체 컨테이너*/
@@ -222,6 +223,9 @@
 }
 
 /* 유저 모달 창*/
+.modal-body{
+  display: flex;
+}
 .train-number {
   display: flex;
   flex-direction: column;
@@ -241,8 +245,9 @@
 .user-state-item {
   display: flex;
   flex-direction: column;
-  gap: 3px;
   margin-left: 5px;
+  height: 15vh;
+  padding: 10px;
 }
 
 .user-state-item div {
