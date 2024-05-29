@@ -7,8 +7,9 @@ import SignUpPage from "~/routes/signup/page";
 import InfoPage from "~/routes/info/page";
 
 import CompletePage from "~/routes/seatInfo/completePage";
-import SeatInfoPage from "~/routes/seatInfo/page";import StandingPage from '~/routes/standing/page'
-
+import SeatInfoPage from "~/routes/seatInfo/page";
+import StandingPage from '~/routes/standing/page';
+import SeatListPage from '~/routes/standing/list/page';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,16 @@ const router = createBrowserRouter([
 {
     path: '/standing',
     element: <StandingPage />,
-    },
+    children: [
+        {
+            path: '/',
+            index: true,
+        },
+        {
+        path: "list",
+        element: <SeatListPage />,
+    }]
+},
+
 ]);
 export default router;
