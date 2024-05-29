@@ -22,7 +22,6 @@ export async function fetchCreateSeatInfo({
   isSeated,
   clothes,
   seatNum,
-  trainNum,
 }) {
   const resp = await service.post("/", {
     user: user,
