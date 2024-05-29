@@ -1,3 +1,4 @@
+
 import axios from "axios";
 
 const BASE_URL = "/api/user";
@@ -7,20 +8,19 @@ const service = axios.create({
 
 // 로그인 요청
 export async function serverLogin({nickname, password}){
-    try{
-    // console.log({nickname,password})
-    const resp = await service.post('/signin',{
+
+    try {
+        const resp = await service.post('/signin',{
         nickname: nickname,
         password: password
     });
+    return resp.data;
 
-    return resp.data;    
     } catch(error) {
-        console.log("login실패")
-        throw error;
-        }   
+        return false;
+    }
+    
 }
-
 // 회원가입 요청
 export async function serverSignUp({ nickname, password }) {
   // console.log({nickname,password})
@@ -32,7 +32,10 @@ export async function serverSignUp({ nickname, password }) {
 }
 
 // 유저 정보 요청
-export async function serverUserInfo() {
-  const resp = await service.get("/detail");
-  return resp;
+export async function serverUserInfo(){
+    const resp = await service.get('/detail', {
+        withCredentials: true
+      });
+    console.log(resp.data)
+    return resp.data;
 }

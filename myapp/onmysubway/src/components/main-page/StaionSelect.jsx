@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import UserInfo from "./UserInfo";
+import { postUserInfo } from "~/apis/userInfo";
 
 // 컴포넌트 이름: StaionSelect
 // 컴포넌트 역할: main page에서 출발역 / 도착역 선택, 선택 다 한 후 고객 모달창 띄워주기
@@ -18,6 +20,7 @@ export default function StaionSelect({
   userState,
   setUserState,
 }) {
+  const user = useSelector((state) => state.user.userId);
   const navigate = useNavigate();
 
   // 모달창 띄울지 말지 결정하는 State
@@ -25,10 +28,30 @@ export default function StaionSelect({
   const handleClose = () => setShow(false); // 모달 창 닫음
   const handleOpen = () => setShow(true); // 모달 창 열기
   const handleSubmit = () => {
+    // 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
     userState === "stand-state" ? setUserState(true) : setUserState(false);
-    navigate("/login"); // 일단 잘 넘어가지는지 확인을 위해 login으로 설정, 추후에 여기서 서있는 사람 ver로 갈건지, 앉아있는 사람 ver로 갈건지 정하면 됨
-  }; // 고객의 정보 넘기기
-  // 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
+    // 1. 만일 앉아 있는 사람이라면 -> 다음 페이지로 넘김
+    if (userState === "sit-state") {
+      navigate("/seatInfo", {
+        state: {
+          user: user,
+          startSt: depart,
+          endSt: arr,
+          compartment: trainNumber,
+        },
+      });
+    }
+    // 2. 만일 서있는 사람이라면, -> 다음 페이지로 넘김
+    else {
+      const isSeated = true;
+      const clothes = "";
+      const seatNum = "sit";
+      postUserInfo({ user, depart, arr, trainNumber, isSeated, clothes, seatNum }).then(resp=>{
+        console.log(resp); // 고객의 정보 넘기기
+        navigate("/standing");
+      });
+    }; 
+    }
 
   // 이후에 이건 서버에서 받아올 것
   const stations = [
@@ -250,7 +273,7 @@ export default function StaionSelect({
           key={"total-station-container " + i}
         >
           {/* 모달 */}
-          {depart === elem.number && (
+          {depart === elem.name && (
             <div className="select-depart-arr left">출발역</div>
           )}
           <div className="station-item">
@@ -263,7 +286,7 @@ export default function StaionSelect({
                 className="station-select-circle"
                 style={{ border: "4px solid " + color }}
                 onClick={() => {
-                  setDepart(elem.number);
+                  setDepart(elem.name);
                 }}
               ></div>
             </div>
@@ -288,13 +311,13 @@ export default function StaionSelect({
                 className="station-select-circle"
                 style={{ border: "4px solid " + color }}
                 onClick={() => {
-                  setArr(elem.number);
+                  setArr(elem.name);
                 }}
               ></div>
             </div>
           </div>
           {/* 모달 */}
-          {arr === elem.number && (
+          {arr === elem.name && (
             <div className="select-depart-arr right">도착역</div>
           )}
         </div>
