@@ -9,7 +9,7 @@ const Complete = () => {
   const navigate = useNavigate();
   // 어디로 가야함?
   const gotoWhere = () => {
-    navigate("/????");
+    navigate("/main");
   };
 
   return (
