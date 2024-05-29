@@ -1,0 +1,18 @@
+.standing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.finding-box {
+}
+
+.finding-box > .destination-text {
+    margin-top: 20vh;
+}
+
+.ttota {
+    width: 60vw;
+}
+
