@@ -118,27 +118,28 @@ const SeatInfo = () => {
       compartment: compartment,
       isSeated: true,
       clothes: clothes,
-      seatNum: seatPosition,
+      seatNum: seatPosition.row + "-" + seatPosition.col,
     };
 
     fetchCreateSeatInfo(data)
       .then(() => {
-        navigate("complete");
+        navigate("/seatInfo/complete");
       })
       .catch((error) => {
-        setErrorMessage("좌석 정보 등록에 실패했습니다. 다시 시도해 주세요.");
         console.error(error);
+        setErrorMessage("좌석 정보 등록에 실패했습니다. 다시 시도해 주세요.");
+        alert(errorMessage);
       });
   };
 
   return (
     <div className="seatInfo">
       {/* 출발역 > 도착역 */}
-      <div>
-        {startSt} {endSt}
+      <div className="directionDiv">
+        <p>{`${startSt} > ${endSt}`}</p>
       </div>
 
-      <div>
+      <div className="firstInfoDiv">
         <p>
           내가 내리는 역을 공유하고,
           <br />
@@ -146,18 +147,22 @@ const SeatInfo = () => {
         </p>
       </div>
 
-      <div>
-        <div>
+      <div className="inputDiv">
+        <div className="inputDivFirstInfo">
           <p>내 좌석 정보 공유하기</p>
         </div>
-        <div>
+        <div className="inputDivSecondInfo">
           <p>
             나의 좌석 위치와 어디 역에서 내리는지 공유해주세요.
             <br />
             서서 가는 사람들에게 소중한 정보가 될 거예요.
           </p>
         </div>
-        <div>
+
+        {/* 라인 */}
+        <div className="divLine"></div>
+
+        <div className="inputDivThirdInfo">
           <p>좌석 위치</p>
 
           {/* 여기서 좌석 데이터를 받을 수 있어야 할듯 */}
@@ -165,31 +170,32 @@ const SeatInfo = () => {
         </div>
 
         {/* 도착지 */}
-        <div>
-          <p className="textContent">
-            <a>도착지: </a>
-            <a>{endSt}</a>
-          </p>
-        </div>
+        <span className="inputDivGoal">
+          <p>도착지: </p>
+          <p id="endSt">{endSt}</p>
+        </span>
 
         {/* 인상착의 */}
-        <div className="textContent">
+        <span className="inputDivInput">
           <p>신발 착장: </p>
           <input
             type="text"
             value={clothes}
+            placeholder="파란색 컨버스"
             onChange={(e) => setClothes(e.target.value)}
           />
-        </div>
+        </span>
 
         {/* 예시 문구 */}
-        <p>
+        <p className="inputDivExample">
           신발 색깔 혹은 나를 구분할 수 있는 착장 정보를 간단하게 알려주세요.
           (ex. 파란색 컨버스)
         </p>
 
         {/* 등록 버튼 */}
-        <Button onClick={handleSeatInfoRegisterClick}>내 정보 등록하기</Button>
+        <Button id="button" onClick={handleSeatInfoRegisterClick}>
+          내 정보 등록하기
+        </Button>
       </div>
     </div>
   );

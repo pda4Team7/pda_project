@@ -1,16 +1,13 @@
+/* App.css */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
 .seatInfo > div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.textContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  gap: 10px;
 }
 
 /* SeatInfo.css */
@@ -24,10 +21,11 @@
 }
 
 .seat {
-  width: 10px; /* 필요에 따라 크기 조절 */
-  height: 10px; /* 필요에 따라 크기 조절 */
+  width: 12px; /* 필요에 따라 크기 조절 */
+  height: 12px; /* 필요에 따라 크기 조절 */
   border: 1px solid #ccc;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* 배경색 전환 애니메이션 추가 */
 }
 
 .seat.clickable {
@@ -36,8 +34,156 @@
 
 .seat.selected {
   background-color: red;
-  width: 10px; /* 필요에 따라 크기 조절 */
-  height: 10px; /* 필요에 따라 크기 조절 */
+  width: 12px; /* 필요에 따라 크기 조절 */
+  height: 12px; /* 필요에 따라 크기 조절 */
   padding: 0;
   border-radius: 0;
+}
+
+.directionDiv {
+  height: 32px;
+  padding-top: 74px;
+}
+
+.directionDiv > p {
+  font-size: 27px;
+  font-family: "Roboto", sans-serif;
+}
+
+.firstInfoDiv {
+  padding-top: 70px;
+}
+
+.firstInfoDiv > p {
+  text-align: left;
+  width: 355px;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "Noto sans KR", sans-serif;
+}
+
+.inputDiv {
+  width: 403px;
+  height: 599px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.inputDiv > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: auto 0;
+}
+
+.inputDivFirstInfo {
+  height: 56px;
+}
+
+.inputDivFirstInfo > p {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  padding-top: 20px;
+}
+
+.inputDivSecondInfo {
+  height: 50px;
+}
+
+.inputDivSecondInfo > p {
+  width: 353px;
+  height: 56px;
+  font-size: 14px;
+  color: #475467;
+  margin-bottom: 0;
+}
+
+.divLine {
+  width: 243px;
+  border-top: 1px solid #e4e4e4;
+}
+
+.inputDivThirdInfo > p {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+.inputDivThirdInfo > div {
+  height: 79px;
+  width: 360px;
+}
+
+.inputDivGoal {
+  background-color: #f2f4f6;
+  border-radius: 10px;
+  width: 343px;
+  height: 52px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: left;
+}
+
+.inputDivGoal > p {
+  color: #22368c;
+  margin: 0 10px;
+  width: 70px;
+  height: 20px;
+  padding-top: 15px;
+  font-weight: bold;
+  font-family: "Nunito" sans-serif;
+}
+
+#endSt {
+  color: black;
+  width: 200px;
+  text-align: left;
+  margin-left: 0;
+}
+
+.inputDivInput {
+  margin-top: 20px;
+  background-color: #f2f4f6;
+  border-radius: 10px;
+  width: 343px;
+  height: 52px;
+  display: flex;
+  flex-direction: row;
+}
+
+.inputDivInput > p {
+  padding-top: 13px;
+  color: #22368c;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 19px;
+  width: 100px;
+}
+
+.inputDivInput > input {
+  background: none;
+  border: none;
+  outline: none;
+  padding-left: 15px;
+  padding-top: 1px;
+}
+
+.inputDivInput > input::placeholder {
+  font-style: italic;
+}
+
+.inputDivExample {
+  color: #979797;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: left;
+  width: 319px;
+  margin-top: 15px;
+}
+
+#button {
+  width: 334px;
+  background-color: #4461f2;
 }

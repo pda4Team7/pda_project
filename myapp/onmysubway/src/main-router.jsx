@@ -28,13 +28,14 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <SignUpPage />,
   },
-
-  // 수정 부탁드립니다 ㅜㅜ
   {
     path: "/seatInfo",
-    element: <SeatInfoPage />,
-
     children: [
+      {
+        path: "",
+        element: <SeatInfoPage />,
+        index: true,
+      },
       {
         path: "complete",
         element: <CompletePage />,
@@ -46,18 +47,19 @@ const router = createBrowserRouter([
     element: <InfoPage />,
   },
 
-{
-    path: '/standing',    
+  {
+    path: "/standing",
     children: [
-        {
-            path: '',
-            index: true,
-            element: <StandingPage />,
-        },
-        {
+      {
+        path: "",
+        index: true,
+        element: <StandingPage />,
+      },
+      {
         path: "list",
         element: <SeatListPage />,
-    }]
-}
+      },
+    ],
+  },
 ]);
 export default router;
