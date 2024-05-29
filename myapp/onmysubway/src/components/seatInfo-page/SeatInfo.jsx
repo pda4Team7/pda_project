@@ -3,9 +3,13 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./seatInfo.css";
 import { fetchCreateSeatInfo } from "../../lib/apis/seatInfo";
+import { useLocation } from "react-router-dom";
 
 // 출발역, 도착역, 앉았는 지 아닌지 여부를 받아야 함
 const SeatInfo = () => {
+  const location = useLocation();
+  const { user, startSt, endSt, compartment } = location.state || {};
+
   // 앉은 곳
   const [seatPosition, setSeatPosition] = useState(null);
 
@@ -108,11 +112,11 @@ const SeatInfo = () => {
 
   const handleSeatInfoRegisterClick = () => {
     const data = {
-      // user: ,
-      // startSt: ,
-      // endSt: ,
-      // compartment: ,
-      // isSeated: ,
+      user: user,
+      startSt: startSt,
+      endSt: endSt,
+      compartment: compartment,
+      isSeated: true,
       clothes: clothes,
       seatNum: seatPosition,
     };
@@ -130,7 +134,9 @@ const SeatInfo = () => {
   return (
     <div className="seatInfo">
       {/* 출발역 > 도착역 */}
-      <div></div>
+      <div>
+        {startSt} {endSt}
+      </div>
 
       <div>
         <p>
@@ -162,7 +168,7 @@ const SeatInfo = () => {
         <div>
           <p className="textContent">
             <a>도착지: </a>
-            <a>{}</a>
+            <a>{endSt}</a>
           </p>
         </div>
 
