@@ -8,18 +8,18 @@ const service = axios.create({
 // 로그인 요청
 export async function postUserInfo({
   user,
-  startSt,
-  endSt,
-  compartment,
+  depart,
+  arr,
+  trainNumber,
   isSeated,
   clothes,
   seatNum,
 }) {
   const resp = await service.post("/", {
     user: user,
-    startSt: startSt,
-    endSt: endSt,
-    compartment: compartment,
+    startSt: depart,
+    endSt: arr,
+    compartment: trainNumber,
     isSeated: isSeated,
     clothes: clothes,
     seatNum: seatNum,

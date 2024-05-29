@@ -28,10 +28,10 @@ export default function StaionSelect({
   const handleClose = () => setShow(false); // 모달 창 닫음
   const handleOpen = () => setShow(true); // 모달 창 열기
   const handleSubmit = () => {
+    // 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
     userState === "stand-state" ? setUserState(true) : setUserState(false);
     // 1. 만일 앉아 있는 사람이라면 -> 다음 페이지로 넘김
     if (userState === "sit-state") {
-      console.log(trainNumber);
       navigate("/seatInfo", {
         state: {
           user: user,
@@ -43,12 +43,15 @@ export default function StaionSelect({
     }
     // 2. 만일 서있는 사람이라면, -> 다음 페이지로 넘김
     else {
-      const flag = true;
-      postUserInfo({ user, depart, arr, trainNumber, flag });
-      navigate("/login");
-    } // 일단 잘 넘어가지는지 확인을 위해 login으로 설정, 추후에 여기서 서있는 사람 ver로 갈건지, 앉아있는 사람 ver로 갈건지 정하면 됨
-  }; // 고객의 정보 넘기기
-  // 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
+      const isSeated = true;
+      const clothes = "";
+      const seatNum = "sit";
+      postUserInfo({ user, depart, arr, trainNumber, isSeated, clothes, seatNum }).then(resp=>{
+        console.log(resp); // 고객의 정보 넘기기
+        navigate("/standing");
+      });
+    }; 
+    }
 
   // 이후에 이건 서버에서 받아올 것
   const stations = [
