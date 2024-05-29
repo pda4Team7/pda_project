@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Image } from 'react-bootstrap';
+import { Form, Button, Image, Modal} from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { serverLogin } from "~/apis/auth.js";
 import { useSelector, useDispatch } from "react-redux";
