@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import React, { useEffect, useState } from 'react';
-import { Image, Form } from 'react-bootstrap';
+import { Image, Form, Button } from 'react-bootstrap';
 import userimg from "~/assets/user_profile.png";
 import userticket from "~/assets/user_tickets.svg";
 import { serverUserInfo } from '~/lib/apis/auth';
@@ -93,7 +93,7 @@ const MyInfo = () => {
 
                 <section className='user-logout-section'> 
                     <Image src={userticket}></Image>
-                    <p> 로그아웃 </p>
+                    <Button> 로그아웃 </Button>
                 </section>
             </section>
         </div>
