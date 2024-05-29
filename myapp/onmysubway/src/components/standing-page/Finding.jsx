@@ -1,11 +1,25 @@
-import React from 'react';
-import { Image } from 'react-bootstrap';
-import ttota from '~/assets/magnifying_ttota.svg'
+import React, { useState } from 'react';
+import { Image, Modal, Button } from 'react-bootstrap';
+import ttota from '~/assets/swimttota.png'
+import ttota_hi from '~/assets/ttota_hi.png'
+import { useNavigate } from 'react-router-dom';
 
 const Finding = () => {
-    // ** update된 user_destination 요청해서 받아오기 !
+    // ** update된 user_destination과 리스트 명수 요청해서 받아오기 !
     const test_user_destination = '부천시청'
+    const test_howmanyseats = 5
     const user_destination = test_user_destination
+    const howmanyseats = test_howmanyseats
+    const navigate = useNavigate();
+
+    const [showModal,setShowModal] = useState(false);
+    const handleModalClose = () => {
+        setShowModal(false);
+      };
+      const handleTicketUse = () => {
+        // ** ticket 소진 DB update 시키기 !
+        navigate('/standing/list')
+      };
 
     return (
         <div className='finding-box'>
@@ -18,7 +32,26 @@ const Finding = () => {
                     빈 자리가 생길지 확인해보세요.
                 </p>
             </div>
-            <Image className='ttotta' src={ttota} fluid></Image>
+            <Image className='ttotta-button' src={ttota} alt="image button finding seat lists"
+            onClick={()=>{setShowModal(true)}} fluid>
+            </Image>
+            <Modal show={showModal} onHide={handleModalClose} centered>
+                <Modal.Body>
+                    <Image className='ttotta-image' src={ttota_hi} alt="image button finding seat lists"></Image>
+                    <h5>{user_destination} 전에 내리는 사람이 {howmanyseats}명 있어요!</h5>
+                    <p> 열람권을 1회 사용해서<br/>
+                        해당 좌석의 위치를 보시겠습니까?</p>
+                </Modal.Body>
+                
+                <Modal.Footer>
+                <Button variant='primary' onClick={handleTicketUse}>
+                    열람권 사용
+                </Button>
+                <Button variant='light' onClick={handleModalClose}>
+                    취소
+                </Button>
+                </Modal.Footer>
+            </Modal> 
         </div>
     );
 };
