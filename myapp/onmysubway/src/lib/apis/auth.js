@@ -1,3 +1,4 @@
+
 import axios from "axios";
 
 const BASE_URL = "/api/user";
@@ -7,6 +8,7 @@ const service = axios.create({
 
 // 로그인 요청
 export async function serverLogin({nickname, password}){
+
     try {
         const resp = await service.post('/signin',{
         nickname: nickname,
@@ -31,7 +33,10 @@ export async function serverSignUp({ nickname, password }) {
 }
 
 // 유저 정보 요청
-export async function serverUserInfo() {
-  const resp = await service.get("/detail");
-  return resp;
+export async function serverUserInfo(){
+    const resp = await service.get('/detail', {
+        withCredentials: true
+      });
+    console.log(resp.data)
+    return resp.data;
 }
