@@ -1,0 +1,17 @@
+.info-page{
+    display: flex;
+    justify-content: center;    
+}
+
+.info-box{    
+    margin: 0 auto;
+    width: 60vmin;
+    background-color: white;
+    box-shadow: 0px 6px 10px 0px #0000000d;
+
+    position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 12px;
+}
