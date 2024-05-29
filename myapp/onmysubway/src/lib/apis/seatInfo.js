@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/api/seatInfo";
+const BASE_URL = "/api/seatInfo";
 
 const service = axios.create({
   baseURL: BASE_URL,
@@ -22,7 +22,6 @@ export async function fetchCreateSeatInfo({
   isSeated,
   clothes,
   seatNum,
-  trainNum,
 }) {
   const resp = await service.post("/", {
     user: user,

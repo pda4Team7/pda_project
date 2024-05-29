@@ -214,4 +214,32 @@ router.get("/ticket", authenticate, async (req, res, next) => {
   }
 });
 
+// 열람권 추가 api
+router.put("/ticket", authenticate, async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(400).json({ err: "유저 조회가 안됨" });
+    }
+
+    console.log("유저 티켓 개수: " + user.ticket);
+
+    const userTicketNum = user.ticket + 1;
+
+    console.log("증가된 티켓 개수: " + userTicketNum);
+
+    user.ticket = userTicketNum;
+
+    await user.save();
+
+    res.status(200).json({
+      message: "열람권이 +1 되었습니다!",
+      nowTicketNum: user.ticket,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

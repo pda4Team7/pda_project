@@ -117,7 +117,7 @@ router.get("/seatList", authenticate, (req, res) => {
                 data.isSeated
             );
 
-            console.log(userSeat);
+            // console.log(userSeat);
 
             // 유저보다 먼저 일어날 확률이 있는 사람들의 리스트
             var userSeatList = trainAndCompart.filter(

@@ -34,7 +34,7 @@ const seatInfoSchema = new mongoose.Schema({
   // 착석 여부
   isSeated: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   // 인상착의
   clothes: {
