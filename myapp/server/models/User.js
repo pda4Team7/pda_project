@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "비밀번호를 입력해 주세요."],
+    validate: {
+      validator: function(v) {
+        return v && v.length >= 6;
+      },
+      message: props => `비밀번호는 최소 6자리 이상이어야 합니다. 현재 길이: ${props.value.length}`
+    }
   },
   // 열람권
   ticket: {

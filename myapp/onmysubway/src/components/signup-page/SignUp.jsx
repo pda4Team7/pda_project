@@ -46,6 +46,7 @@ const SignUp = () => {
             console.log('회원가입 성공, User 정보: ', auth_data);
             setShowModal(true); // 회원가입 성공 시 모달 창 표시
           } else {
+            console.log(auth_data)
             alert("회원가입 도중 에러가 발생하였습니다. 닉네임과 비밀번호를 확인해주세요.")
           }        
         }) 

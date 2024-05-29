@@ -21,6 +21,8 @@ export async function serverLogin({nickname, password}){
     }
     
 }
+
+
 // 회원가입 요청
 export async function serverSignUp({ nickname, password }) {
     try {
@@ -28,9 +30,13 @@ export async function serverSignUp({ nickname, password }) {
             nickname: nickname,
             password: password,
           });
-          return resp.data;
+          return [true,resp.data];
     } catch(err){
-        return false;
+        if (err.response && err.response.data && err.response.data.message) {
+            return err.response.data.message; // 서버가 제공하는 에러 메시지 리턴
+        } else {
+            return [false,err.message]; // 기본 에러 메시지 리턴
+        }
     }
   
  
