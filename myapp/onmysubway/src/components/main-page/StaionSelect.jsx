@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import UserInfo from "./UserInfo";
 import { postUserInfo } from "~/apis/userInfo";
+import { useDispatch } from "react-redux";
+import {setEndSt} from "~/store/reducers/user" 
 
 // 컴포넌트 이름: StaionSelect
 // 컴포넌트 역할: main page에서 출발역 / 도착역 선택, 선택 다 한 후 고객 모달창 띄워주기
@@ -22,6 +24,7 @@ export default function StaionSelect({
 }) {
   const user = useSelector((state) => state.user.userId);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // 모달창 띄울지 말지 결정하는 State
   const [show, setShow] = useState(false);
@@ -46,12 +49,24 @@ export default function StaionSelect({
       const isSeated = true;
       const clothes = "";
       const seatNum = "sit";
-      postUserInfo({ user, depart, arr, trainNumber, isSeated, clothes, seatNum }).then(resp=>{
+
+      // 도착 정보를 redux로 추가
+      dispatch(setEndSt({ endSt: arr }));
+
+      postUserInfo({
+        user,
+        depart,
+        arr,
+        trainNumber,
+        isSeated,
+        clothes,
+        seatNum,
+      }).then((resp) => {
         console.log(resp); // 고객의 정보 넘기기
         navigate("/standing");
       });
-    }; 
     }
+  };
 
   // 이후에 이건 서버에서 받아올 것
   const stations = [

@@ -3,11 +3,13 @@ const initialState = {
   userId: "",
   userName: "",
   userToken: "",
+  endSt: "",
 };
 
 // Action Type
 export const LOGGED_IN = "user/LOGGED_IN";
 export const LOGGED_OUT = "user/LOGGED_OUT";
+export const SET_END_ST = "user/SET_END_ST";
 
 // Action Creator
 export const loginUser = ({ user_id, user_name, user_token }) => ({
@@ -18,6 +20,11 @@ export const loginUser = ({ user_id, user_name, user_token }) => ({
 export const logoutUser = () => ({
   type: LOGGED_OUT,
   payload: {},
+});
+
+export const setEndSt = ({ endSt }) => ({
+  type: SET_END_ST,
+  payload: { endSt },
 });
 
 function userReducer(state = initialState, action) {
@@ -31,6 +38,8 @@ function userReducer(state = initialState, action) {
       };
     case LOGGED_OUT:
       return { ...state, userId: "" };
+    case SET_END_ST:
+      return { ...state, endSt: action.payload.endSt };
     default:
       return state;
   }
