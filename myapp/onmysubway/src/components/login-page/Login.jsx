@@ -36,8 +36,6 @@ const Login = () => {
         dispatch(
           loginUser({ user_id: auth_data._id, user_name: auth_data.nickname })
         );
-
-        setUser({auth_data});
         console.log(user);
         // 로그인 성공 후 main 페이지로 리다이렉션
         navigate('/main');

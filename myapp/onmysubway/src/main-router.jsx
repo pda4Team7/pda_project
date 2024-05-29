@@ -46,18 +46,17 @@ const router = createBrowserRouter([
     element: <InfoPage />,
   },
 {
-    path: '/standing',
-    element: <StandingPage />,
+    path: '/standing',    
     children: [
         {
-            path: '/',
+            path: '',
             index: true,
+            element: <StandingPage />,
         },
         {
         path: "list",
         element: <SeatListPage />,
     }]
 },
-
 ]);
 export default router;
