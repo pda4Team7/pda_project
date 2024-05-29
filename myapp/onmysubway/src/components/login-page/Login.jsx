@@ -62,7 +62,7 @@ const Login = () => {
               <Form.Control
                 className="login-input"
                 type="text"
-                placeholder="Enter Email"
+                placeholder="Enter nickname"
                 style={{ fontStyle: "italic" }}
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
