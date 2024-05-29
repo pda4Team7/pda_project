@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button, Image } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Image } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
 import { serverLogin } from "~/apis/auth.js";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from "~/store/reducers/user";
@@ -26,25 +26,28 @@ const Login = () => {
     event.preventDefault();
     // serverLogin 함수를 통해 DB에 저장되어 있는 User 정보와 일치하는지 request 요청을 보내고,
     // 응답받은 데이터로 로그인된 user의 정보를 가져온다.
+    
     try {
-      serverLogin({ nickname, password }).then((auth_data) => {
-        console.log("Login 성공, User 정보: ");
-        // 로그인 성공 후 User 정보 설정
+      serverLogin({nickname,password}).then((auth_data)=>{     
+
+      // 로그인 성공 후 User 정보 설정
+      if(auth_data!==false){
         // setUser({auth_data});
         dispatch(
           loginUser({ user_id: auth_data._id, user_name: auth_data.nickname })
         );
 
-        // redux 전역 변수로 관리
-
+        setUser({auth_data});
+        console.log(user);
         // 로그인 성공 후 main 페이지로 리다이렉션
-        navigate("/main");
-      });
-      // **로그인 실패 후 => 이어서 코드 작성!
-    } catch (error) {
-      console.error("Login 실패, Error 출력: ", error);
-    }
-  };
+        navigate('/main');
+      } else {
+        alert("닉네임과 비밀번호를 확인해주세요.")
+      }
+        
+    })} catch(err) {
+      console.log(err)
+    }}
 
   // signup 버튼을 누르면 호출되는 함수
   // navigate를 통해 signup 페이지로 이동
