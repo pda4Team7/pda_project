@@ -262,4 +262,71 @@ router.post("/check", authenticate, async (req, res, next) => {
   }
 });
 
+const path = require("path");
+const multer = require("multer");
+const fs = require("fs");
+// const upload = multer({ dest: "./upload" });
+const upload = multer({
+  storage: multer.diskStorage({
+    filename(req, file, done) {
+      console.log(file);
+      done(null, file.originalname);
+    },
+    destination(req, file, done) {
+      console.log(file);
+      done(null, path.join(__dirname, "../../public/image"));
+    },
+  }),
+});
+
+router.post(
+  "/profile",
+  authenticate,
+  upload.single("image"),
+  async (req, res, next) => {
+    try {
+      const userId = req.user._id;
+
+      console.log(`userId: ${userId}`);
+
+      const image = "/image/" + req.file.originalname;
+
+      console.log(image);
+
+      const updatedUser = await User.findByIdAndUpdate(userId, {
+        profile: image,
+      });
+
+      console.log(updatedUser);
+
+      res.status(201).json(updatedUser);
+    } catch (error) {
+      console.log("profile error");
+      next(error);
+    }
+  }
+);
+
+router.get("/img", authenticate, async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+
+    const user = await User.findById(userId);
+
+    const imagePath = path.join(__dirname, `../../public${user.profile}`);
+
+    fs.readFile(imagePath, (err, data) => {
+      if (err) {
+        console.log("fs.readFile 에러");
+        return res.status(404).json({ message: "이미지 낫 파운드" });
+      }
+
+      res.writeHead(200, { "Content-Type": "image/jpeg" });
+      res.end(data);
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
