@@ -34,7 +34,6 @@ const MyInfo = () => {
       const imageData = await serverGetImage();
 
       if (imageData) {
-        console.log(imageData);
         setUserImage(imageData);
       }
     } catch (error) {
@@ -54,7 +53,12 @@ const MyInfo = () => {
         const formData = new FormData();
         formData.append("image", file);
 
-        await serverInputImage(formData);
+        const response = await serverInputImage(formData);
+
+        // 서버에서 새 이미지 URL을 받아와서 설정
+        if (response && response.data && response.data.imageUrl) {
+          setUserImage(response.data.imageUrl);
+        }
 
         fetchUserImage();
       };
