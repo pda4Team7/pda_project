@@ -13,11 +13,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "비밀번호를 입력해 주세요."],
     validate: {
-      validator: function(v) {
+      validator: function (v) {
         return v && v.length >= 8;
       },
-      message: props => `비밀번호는 최소 8자리 이상이어야 합니다. 현재 길이: ${props.value.length}`
-    }
+      message: (props) =>
+        `비밀번호는 최소 8자리 이상이어야 합니다. 현재 길이: ${props.value.length}`,
+    },
   },
   // 열람권
   ticket: {
@@ -28,6 +29,10 @@ const userSchema = new mongoose.Schema({
   today_ticket: {
     type: Boolean,
     default: false,
+  },
+  // 프로필 이미지
+  profile: {
+    type: String,
   },
 });
 
@@ -69,6 +74,7 @@ visibleUser.get(function () {
     nickname: this.nickname,
     ticket: this.ticket,
     today_ticket: this.today_ticket,
+    profile: this.profile,
   };
 });
 

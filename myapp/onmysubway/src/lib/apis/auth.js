@@ -20,29 +20,29 @@ export async function serverLogin({ nickname, password }) {
 
 // 회원가입 요청
 export async function serverSignUp({ nickname, password }) {
-
-    try {
-        const resp = await service.post("/signup", {
-            nickname: nickname,
-            password: password,
-          });
-          return [true,resp.data];
-    } catch(err){
-        return [false,err.message]; // 기본 에러 메시지 리턴        
-    }
+  try {
+    const resp = await service.post("/signup", {
+      nickname: nickname,
+      password: password,
+    });
+    return [true, resp.data];
+  } catch (err) {
+    return [false, err.message]; // 기본 에러 메시지 리턴
+  }
 }
 
 // 닉네임 중복 여부 확인 요청
 export async function nicknameCheck({ nickname }) {
-    try {
-        const resp = await service.get("/signup/check", {
-            params: {
-                nickname: nickname,}
-          });
-          return [true,resp.data];
-    } catch(err){
-        return [false,err];      
-    }
+  try {
+    const resp = await service.get("/signup/check", {
+      params: {
+        nickname: nickname,
+      },
+    });
+    return [true, resp.data];
+  } catch (err) {
+    return [false, err];
+  }
 }
 
 // 유저 정보 요청
@@ -97,6 +97,31 @@ export async function serverCheckPassword({ saltPassword, password }) {
     console.log(`현재 비번: ${resp.data.isCorrect}`);
 
     return resp.data.isCorrect;
+  } catch (error) {
+    return false;
+  }
+}
+
+export async function serverInputImage(formData) {
+  try {
+    const resp = await service.post("/profile", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  } catch (error) {
+    console.error("이미지 업로드 에러", error);
+    return false;
+  }
+}
+
+export async function serverGetImage() {
+  try {
+    const resp = await service.get("/img", {
+      responseType: "blob",
+    });
+
+    return resp.data;
   } catch (error) {
     return false;
   }

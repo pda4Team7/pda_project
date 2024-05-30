@@ -50,18 +50,16 @@ router.post("/signup", async (req, res, next) => {
     const { nickname, password } = req.body;
     const user = await User.signUp(nickname, password);
     res.status(201).json(user);
-
   } catch (error) {
     res.status(400);
     next(error);
   }
 });
 
-
 // 닉네임 중복 확인
-router.get('/signup/check',async (req,res,next)=>{
-  try{
-    console.log("check")
+router.get("/signup/check", async (req, res, next) => {
+  try {
+    console.log("check");
     const { nickname } = req.query;
     if (!nickname) {
       return res.status(400).json({ message: "닉네임을 제공해 주세요." });
@@ -75,8 +73,7 @@ router.get('/signup/check',async (req,res,next)=>{
   } catch (error) {
     console.log(error);
   }
-})    
-    
+});
 
 // 로그인
 router.post("/signin", async (req, res, next) => {
@@ -255,6 +252,73 @@ router.post("/check", authenticate, async (req, res, next) => {
       console.log(`${req.body.saltPassword} - ${req.body.password}`);
       return res.status(400).json({ isCorrect: false });
     }
+  } catch (error) {
+    next(error);
+  }
+});
+
+const path = require("path");
+const multer = require("multer");
+const fs = require("fs");
+// const upload = multer({ dest: "./upload" });
+const upload = multer({
+  storage: multer.diskStorage({
+    filename(req, file, done) {
+      console.log(file);
+      done(null, file.originalname);
+    },
+    destination(req, file, done) {
+      console.log(file);
+      done(null, path.join(__dirname, "../../public/image"));
+    },
+  }),
+});
+
+router.post(
+  "/profile",
+  authenticate,
+  upload.single("image"),
+  async (req, res, next) => {
+    try {
+      const userId = req.user._id;
+
+      console.log(`userId: ${userId}`);
+
+      const image = "/image/" + req.file.originalname;
+
+      console.log(image);
+
+      const updatedUser = await User.findByIdAndUpdate(userId, {
+        profile: image,
+      });
+
+      console.log(updatedUser);
+
+      res.status(201).json(updatedUser);
+    } catch (error) {
+      console.log("profile error");
+      next(error);
+    }
+  }
+);
+
+router.get("/img", authenticate, async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+
+    const user = await User.findById(userId);
+
+    const imagePath = path.join(__dirname, `../../public${user.profile}`);
+
+    fs.readFile(imagePath, (err, data) => {
+      if (err) {
+        console.log("fs.readFile 에러");
+        return res.status(404).json({ message: "이미지 낫 파운드" });
+      }
+
+      res.writeHead(200, { "Content-Type": "image/jpeg" });
+      res.end(data);
+    });
   } catch (error) {
     next(error);
   }

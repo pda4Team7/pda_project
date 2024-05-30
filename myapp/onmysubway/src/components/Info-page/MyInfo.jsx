@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { Image, Form, Button } from "react-bootstrap";
 import userimg from "~/assets/user_profile.png";
@@ -7,11 +6,14 @@ import {
   serverUserInfo,
   serverLogout,
   serverCheckPassword,
+  serverGetImage,
+  serverInputImage,
 } from "~/lib/apis/auth";
 import { useNavigate } from "react-router-dom";
 import useredit from "~/assets/user_edit.svg";
 import logout from "~/assets/user_logout.svg";
 import backIcon from "../../assets/back-icon.png";
+import imgIcon from "../../assets/img-icon.png";
 
 const MyInfo = () => {
   // 첫 렌더링시 user의 정보를 get요청 보내서 가져옴
@@ -21,7 +23,51 @@ const MyInfo = () => {
   const [pw_after, setPasswordAfter] = useState("");
   const [pwchange, setPasswordChange] = useState(false);
   const [pwcorrect, setPasswordCorrect] = useState();
+
+  const [userImage, setUserImage] = useState(null);
+
   const navigate = useNavigate();
+
+  // 이미지 가져 오기 함수
+  const fetchUserImage = async () => {
+    try {
+      const imageData = await serverGetImage();
+
+      if (imageData) {
+        console.log(imageData);
+        setUserImage(imageData);
+      }
+    } catch (error) {
+      console.error("에러다아아", error);
+    }
+  };
+
+  // 이미지 업로드 함수
+  const uploadImage = async () => {
+    try {
+      const input = document.createElement("input");
+      input.type = "file";
+
+      input.onchange = async (event) => {
+        const file = event.target.files[0];
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        await serverInputImage(formData);
+
+        fetchUserImage();
+      };
+
+      input.click();
+    } catch (error) {
+      console.error("이미지 넣기 에러", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserImage();
+  }, []);
 
   useEffect(() => {
     try {
@@ -93,8 +139,19 @@ const MyInfo = () => {
       <Image onClick={handleBackPage} className="icon" src={backIcon} />
       <div className="info-box">
         <section className="profile-section">
-          <Image src={userimg}></Image>
+          <Image
+            className="circular-image"
+            src={userImage ? URL.createObjectURL(userImage) : userimg}
+          ></Image>
           <p>{user.nickname}</p>
+          {/* <Button className="upload-button" onClick={uploadImage}>
+            <im
+          </Button> */}
+          <Image
+            src={imgIcon}
+            className="upload-button"
+            onClick={uploadImage}
+          />
         </section>
 
         <div className="vertical-line"></div>
