@@ -1,11 +1,15 @@
+@import "../../index.css";
+
 .main-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Noto Sans KR";
+  font-family: var(--kr-font-family);
 }
-
+.modal {
+  font-family: var(--kr-font-family);
+}
 /* -- Component1: user-navigation-tab -- */
 
 #user-nav-name {
@@ -14,7 +18,7 @@
 
 .user-nav-text {
   font-size: 0.7em;
-  color: #22368c;
+  color: var(--dark-blue);
 }
 
 .user-navigation-tab {
@@ -24,7 +28,7 @@
   z-index: 1;
 
   top: 0;
-  background-color: #f6f6f6;
+  background-color: var(--light-white-gray);
   box-shadow: 0px 6px 10px 1px #00000028;
 }
 
@@ -59,7 +63,7 @@
   align-items: center;
   width: 100%;
   z-index: 0;
-  background-color: #eaeaea;
+  background-color: var(--light-gray);
 }
 
 .subway-select-group {
@@ -74,7 +78,7 @@
 .subway-select-number {
   padding: 10px;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--light-white-gray);
   border-radius: 1em;
 }
 
@@ -123,7 +127,7 @@
   height: calc(100vh - 200px);
   width: 100vmin;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: white;
 }
 
 /* 2. 역 선택 전체 컨테이너*/
@@ -194,11 +198,11 @@
 .select-depart-arr {
   display: flex;
   flex-wrap: nowrap;
-  padding: 5px;
-  background-color: rgba(168, 166, 167, 0.67);
+  padding: 6px;
+  background-color: var(--light-white-gray);
   border-radius: 6px;
   gap: 5px;
-  font-size: 10px;
+  font-size: 13px;
   position: absolute;
   top: 35%;
 }
@@ -223,9 +227,13 @@
 }
 
 /* 유저 모달 창*/
-.modal-body{
+.modal-body {
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px !important;
 }
+
 .train-number {
   display: flex;
   flex-direction: column;
@@ -238,23 +246,41 @@
 .train-number div {
   margin-bottom: 15px;
 }
-.user-state div {
+.user-state .mb-3 {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 10px;
+}
+.form.user-state {
+  width: 100%;
+}
+#stand-state{
+  position: absolute;
+  top: 45vh;
+  left: 6vh;
+}
+#sit-state{
+  position: absolute;
+  top: 45vh;
+  left: 25.5vh;
+}
+.form-check {
+  margin: 0 !important;
 }
 .user-state-item {
   display: flex;
   flex-direction: column;
-  margin-left: 5px;
   height: 15vh;
-  padding: 10px;
+  font-size: 15px;
+  padding: 13px;
 }
 
-.user-state-item div {
+.user-state-item strong {
   margin-bottom: 3px;
   font-weight: bold;
 }
+
 .selected {
-  border: 2px solid #007bff; /* 원하는 테두리 색으로 변경 */
+  border: 2px solid var(--blue); /* 원하는 테두리 색으로 변경 */
   border-radius: 5px;
 }

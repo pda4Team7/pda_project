@@ -51,11 +51,10 @@ export default function SeatDetailInfo({ show, handleClose, user }) {
     { row: 5, col: 28 },
     { row: 5, col: 29 },
   ];
-  const jsonString = user.seatNum.replace(/(\w+):/g, '"$1":');
-  const seatObj = JSON.parse(jsonString);
+  const seatObj = user.seatNum.split("-");
 
-  const selectedRow = seatObj.row;
-  const selectedCol = seatObj.col;
+  const selectedRow = parseInt(seatObj[0]);
+  const selectedCol = parseInt(seatObj[1]);
 
   const renderGrid = () => {
     const rows = 6;

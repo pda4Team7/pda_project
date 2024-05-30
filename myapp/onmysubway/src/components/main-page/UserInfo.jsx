@@ -65,8 +65,8 @@ export default function UserInfo({
                 />
                 <Form.Check.Label htmlFor="stand-state">
                   <div className="user-state-item">
-                    <div>지금 서 있어요</div>
-                    <p>열람권을 사용해 좌석정보를 알 수 있어요!</p>
+                    <div><strong>지금 서 있어요</strong></div>
+                    <div>열람권을 사용해 좌석정보를 알 수 있어요!</div>
                   </div>
                 </Form.Check.Label>
               </Form.Check>
@@ -87,8 +87,8 @@ export default function UserInfo({
                 />
                 <Form.Check.Label htmlFor="sit-state">
                   <div className="user-state-item">
-                    <div>지금 앉아있어요</div>
-                    <p>본인의 정보를 남기고 열람권 1개를 획득하세요!</p>
+                    <div><strong>지금 앉아있어요</strong></div>
+                    <div>본인의 정보를 남기고 열람권 1개를 획득하세요!</div>
                   </div>
                 </Form.Check.Label>
               </Form.Check>
