@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Image, Form, Button } from 'react-bootstrap';
 import userimg from "~/assets/user_profile.png";
 import userticket from "~/assets/user_tickets.svg";
+import useredit from "~/assets/user_edit.svg"
+import logout from "~/assets/user_logout.svg"
 import { serverUserInfo, serverLogout } from '~/lib/apis/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -78,14 +80,18 @@ const MyInfo = () => {
             <div className='vertical-line'></div>
             <section className='user-info-section'>
                 <section className='user-ticket-section'>
+                    <div className='user-ticket-title'>
                     <Image src={userticket}></Image>
                     <p> 열람권 </p>
+                    </div>
                     <p> 보유한 열람권: {user.ticket}개</p>
                 </section>
 
                 <section className='user-pw-section'>
-                    <Image src={userticket}></Image>
+                    <div className='user-edit-title'>
+                    <Image src={useredit}></Image>
                     <p> 내 정보 수정 </p>
+                    </div>
                     <Form>
                     <Form.Group controlId="formBasicPassword">
                         <Form.Control className='password-before'       
@@ -105,8 +111,10 @@ const MyInfo = () => {
                 </section>
 
                 <section className='user-logout-section'> 
-                    <Image src={userticket}></Image>
+                    <div className='user-logout-title'>
+                    <Image src={logout}></Image>
                     <Button onClick={handlelogout}> 로그아웃 </Button>
+                    </div>
                 </section>
             </section>
         </div>

@@ -1,6 +1,8 @@
 .info-page{
     display: flex;
-    justify-content: center;    
+    justify-content: center;
+    font-family: 'Noto Sans KR';
+    font-weight: 350;
 }
 
 .info-box{    
@@ -19,22 +21,44 @@
 }
 
 .user-info-section > section {
-    margin-top: 3vh;
+    margin-top: 5vh;
 }
 
 .profile-section {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 3vw;
     margin-bottom : 3vh;
+}
+
+.profile-section > p {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.profile-section > img {
+    width: 18vw;
+    max-width: 25%;
 }
 
 .vertical-line {
     width: 60%;               
-    height: 0.5px;            
+    height: 0.1px;            
     background-color: #C4C4C4;
-    margin: 0 auto;  
+    opacity: 30%;
+    margin: 0 auto;
+    margin-bottom: 7vh;  
 }
 
-.user-ticket-section {
+.user-ticket-title, .user-edit-title {
+    display: flex;
+    gap: 5px;
+    text-align: center;
+    margin-bottom: 2vh;
 }
+.user-ticket-title > p , .user-edit-title > p {
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
