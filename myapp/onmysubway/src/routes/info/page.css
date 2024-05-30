@@ -83,8 +83,6 @@ section {
 }
 
 
-
-
 .user-logout-title {
     display: flex;
     align-items: center;
@@ -103,7 +101,6 @@ section {
     padding-left: 0;
 }
 
-img {
+.user-logout-title > img {
     padding-left: 10px;
-    padding-right: px;
 }
