@@ -84,7 +84,7 @@ const MyInfo = () => {
                     <Image src={userticket}></Image>
                     <p> 열람권 </p>
                     </div>
-                    <p> 보유한 열람권: {user.ticket}개</p>
+                    <div> 보유한 열람권: <b>{user.ticket}</b> 개</div>
                 </section>
 
                 <section className='user-pw-section'>
@@ -92,7 +92,7 @@ const MyInfo = () => {
                     <Image src={useredit}></Image>
                     <p> 내 정보 수정 </p>
                     </div>
-                    <Form>
+                    <Form className='user-password-edit-group'>
                     <Form.Group controlId="formBasicPassword">
                         <Form.Control className='password-before'       
                             type="password"
