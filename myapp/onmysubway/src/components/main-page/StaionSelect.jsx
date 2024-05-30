@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import UserInfo from "./UserInfo";
 import { postUserInfo } from "~/apis/userInfo";
 import { useDispatch } from "react-redux";
-import {setEndSt} from "~/store/reducers/user" 
+import { setEndSt } from "~/store/reducers/user";
 
 // 컴포넌트 이름: StaionSelect
 // 컴포넌트 역할: main page에서 출발역 / 도착역 선택, 선택 다 한 후 고객 모달창 띄워주기
@@ -32,7 +32,7 @@ export default function StaionSelect({
   const handleOpen = () => setShow(true); // 모달 창 열기
   const handleSubmit = () => {
     // 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
-    userState === "stand-state" ? setUserState(true) : setUserState(false);
+    // userState === "stand-state" ? setUserState(true) : setUserState(false);
     // 1. 만일 앉아 있는 사람이라면 -> 다음 페이지로 넘김
     if (userState === "sit-state") {
       navigate("/seatInfo", {
@@ -46,9 +46,9 @@ export default function StaionSelect({
     }
     // 2. 만일 서있는 사람이라면, -> 다음 페이지로 넘김
     else {
-      const isSeated = true;
+      const isSeated = false;
       const clothes = "";
-      const seatNum = "sit";
+      const seatNum = "stand";
 
       // 도착 정보를 redux로 추가
       dispatch(setEndSt({ endSt: arr }));

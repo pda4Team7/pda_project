@@ -12,7 +12,6 @@ const SeatList = () => {
   const [user, setUser] = useState(null);
   const handleClose = () => setShow(false);
   const chooseUser = (user) => {
-    console.log(user);
     setUser(user);
     setShow(true);
   };

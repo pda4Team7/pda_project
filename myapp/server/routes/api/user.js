@@ -172,7 +172,7 @@ router.get("/ticket", authenticate, async (req, res, next) => {
     }
 
     const userTicketNum = user.ticket;
-    console.log(userTicketNum);
+    // console.log(userTicketNum);
     if (userTicketNum < 1) {
       return res.status(400).json({ message: "열람권이 없습니다!" });
     }
