@@ -199,7 +199,6 @@ router.get("/ticket", authenticate, async (req, res, next) => {
     const oneDay = 24 * 60 * 60 * 1000;
     let now = new Date();
     if (now - user.last_ticket_use >= oneDay || !user.last_ticket_use) {
-      console.log("here!!!");
       user.ticket -= 1;
       user.today_ticket = true;
       user.last_ticket_use = now;
