@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
@@ -6,11 +6,45 @@ import UserInfo from "./UserInfo";
 import { postUserInfo } from "~/apis/userInfo";
 import { useDispatch } from "react-redux";
 import { setEndSt } from "~/store/reducers/user";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 
 // 컴포넌트 이름: StaionSelect
 // 컴포넌트 역할: main page에서 출발역 / 도착역 선택, 선택 다 한 후 고객 모달창 띄워주기
 // 추후에 고객의 서있는/앉아있는 상태에 따라 handleSubmit에서 가는 navigate를 다르게 하면 될듯
 // css 파일: routes > page.css
+const Box = styled(motion.div)`
+  position: fixed;
+  right: 20vw;
+  bottom: 30px;
+  z-index: 10;
+  width: 60vw;
+  height: 8vh;
+  font-size: 20px;
+  background-color: #0d6efd;
+  color: white;
+  text-align: center;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+`;
+const hoverVars = {
+  hover: {
+    scale: 1.5,
+    rotateZ: 90,
+  },
+  click: {
+    scale: 1.3,
+    borderRadius: "100px",
+  },
+  drag: {
+    backgroundColor: "rgb(46, 204, 113)",
+    transition: { duration: 3 },
+  },
+};
+
 export default function StaionSelect({
   color,
   depart,
@@ -284,13 +318,14 @@ export default function StaionSelect({
     <div>
       {stations.map((elem, i) => (
         <div
-          className="total-station-container"
+          className="total-station-container animate__animated animate__fadeInUp"
           key={"total-station-container " + i}
         >
           {/* 모달 */}
           {depart === elem.name && (
             <div className="select-depart-arr left animate__animated animate__fadeInUp">
-              <i className="fa-solid fa-check animate__animated animate__fadeInUp"></i>출발
+              <i className="fa-solid fa-check animate__animated animate__fadeInUp"></i>
+              출발
             </div>
           )}
           <div className="station-item">
@@ -336,15 +371,21 @@ export default function StaionSelect({
           {/* 모달 */}
           {arr === elem.name && (
             <div className="select-depart-arr right  animate__animated animate__fadeInUp">
-              <i className="fa-solid fa-check  animate__animated animate__fadeInUp"></i>도착
+              <i className="fa-solid fa-check  animate__animated animate__fadeInUp"></i>
+              도착
             </div>
           )}
         </div>
       ))}
       {arr !== null && depart !== null ? (
-        <Button variant="primary" onClick={handleOpen} className="addInfoBtn">
+        <Box
+          variants={hoverVars}
+          whileHover="hover"
+          whileTap="click"
+          onClick={handleOpen}
+        >
           추가 정보 입력하러 가기
-        </Button>
+        </Box>
       ) : null}
       <UserInfo
         show={show}

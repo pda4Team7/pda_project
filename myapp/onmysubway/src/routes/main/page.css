@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   font-family: var(--kr-font-family);
-  background: linear-gradient(135deg, #BCD2FF, #9d7bfe);
+  background: linear-gradient(135deg, #bcd2ff, #9d7bfe);
 }
 .modal {
   font-family: var(--kr-font-family);
@@ -34,11 +34,11 @@
 } */
 .nav-toggle {
   position: fixed;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: transparent;
-    border: none;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: none;
 }
 .nav-toggle > img {
   max-width: 20vw;
@@ -179,7 +179,6 @@
   text-align: center;
 }
 
-
 #sub-dir-0,
 #sub-dir-1 {
   flex: 1;
@@ -232,7 +231,6 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  
 }
 
 .station-select-line {
@@ -289,16 +287,14 @@
   font-weight: 400;
 }
 
-
-
 .left {
   right: 80vw;
-  background-color: rgba(230, 95, 54, 0.14)
+  background-color: rgba(230, 95, 54, 0.14);
 }
 
 .right {
   left: 80vw;
-  background-color: rgba(98, 217, 29, 0.14)
+  background-color: rgba(98, 217, 29, 0.14);
 }
 
 /* 유저 입력창으로 넘어가는 모달 */
@@ -310,6 +306,7 @@
   width: 60vw;
   height: 8vh;
   font-size: 20px;
+  background-color: #fff;
 }
 
 /* 유저 모달 창*/
@@ -340,12 +337,12 @@
 .form.user-state {
   width: 100%;
 }
-#stand-state{
+#stand-state {
   position: relative;
   top: 1vh;
   left: 1vh;
 }
-#sit-state{
+#sit-state {
   position: relative;
   top: 1vh;
   left: 1vh;
