@@ -354,7 +354,7 @@
 .user-state-item {
   display: flex;
   flex-direction: column;
-  height: 15vh;
+  height: 19vh;
   font-size: 15px;
   padding: 13px;
 }
