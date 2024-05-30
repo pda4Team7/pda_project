@@ -127,7 +127,7 @@
   height: calc(100vh - 200px);
   width: 100vmin;
   overflow-y: auto;
-  background-color: white;
+  background-color: var(--light-white-gray);
 }
 
 /* 2. 역 선택 전체 컨테이너*/
@@ -199,20 +199,22 @@
   display: flex;
   flex-wrap: nowrap;
   padding: 6px;
-  background-color: var(--light-white-gray);
+  background-color: var(--light-dark-gray);
+  font-weight: 500;
   border-radius: 6px;
   gap: 5px;
   font-size: 13px;
   position: absolute;
   top: 35%;
+  align-items: center;
 }
 
 .left {
-  right: 85%;
+  right: 83vw;
 }
 
 .right {
-  left: 85%;
+  left: 83vw;
 }
 
 /* 유저 입력창으로 넘어가는 모달 */

@@ -1,18 +1,55 @@
+@import "../../index.css";
+
 .standing-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--kr-font-family);
+  height: 100vh;
 }
 .finding-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8vw;
 }
 
-.finding-box > .destination-text {
-    margin-top: 20vh;
+.destination-text strong {
+  color: var(--dark-blue);
 }
 
-.ttota-button {
-    width: 60vw;
+.destination-text {
+  font-size: 20px;
+  margin-bottom: 4vh;
 }
 
+.finding-text {
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 5vh;
+}
+.finding-text strong {
+  font-weight: 900;
+}
+
+.ttotta-button {
+  width: 80vw;
+}
+
+.finding-img {
+  padding-left: calc(100vw - 80vw - 8vw);
+}
+
+/* 모달창 css */
+/* 이미지 */
+.ttotta-image {
+  width: 100%;
+}
+/* 안에 text */
+.modal-title-text {
+  font-weight: 500;
+}
+.modal-body {
+  gap: 12px !important;
+}

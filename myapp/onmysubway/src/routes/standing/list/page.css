@@ -1,3 +1,4 @@
+@import "../../../index.css";
 .main-container {
   position: relative;
   top: 20vh;
@@ -9,7 +10,6 @@
 
 .seat-info-title {
   font-size: 1.2rem;
-  font-weight: bold;
   margin-bottom: 10px;
 }
 
@@ -39,14 +39,15 @@
 .modal-body {
   display: flex;
   flex-direction: column;
-  gap: 30px;
 }
 /* 주의 문구 */
 .modal-body p {
-  margin-bottom: 0px;
   text-align: center;
 }
-
+.modal-body > p {
+  margin-bottom: 20px;
+  color: var(--dark-blue);
+}
 /* 자리 위치 그림 */
 .seat-title {
   margin-bottom: 10px;
@@ -54,11 +55,25 @@
   text-align: center;
 }
 .seat-grid {
+  margin-bottom: 20px;
   align-items: center;
 }
+.seat-row {
+  box-sizing: border-box;
+  width: 90%;
+  height: 90%;
+}
+.seat-detail-container{
+  width: 80vw;
+}
 .seat-detail-item {
-  background-color: lightblue;
+  background-color: var(--light-dark-gray) !important;
   font-weight: bold;
+  margin-bottom: 10px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding:  10px;
 }
 .seat-detail-item span {
   font-weight: bold;

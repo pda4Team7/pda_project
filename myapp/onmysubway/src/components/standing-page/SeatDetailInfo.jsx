@@ -86,39 +86,35 @@ export default function SeatDetailInfo({ show, handleClose, user }) {
     return grid;
   };
   return (
-    <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{user.user.nickname}님 정보</Modal.Title>
-        </Modal.Header>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>{user.user.nickname}님 정보</Modal.Title>
+      </Modal.Header>
 
-        <Modal.Body className="modal-body">
-          <p>
-            아래 정보를 참고하여 자리를 선점해 보세요!<br></br>
-            자리를 앉지 못할 수도 있습니다.
-          </p>
-          <div>
-            <div className="seat-title">
-              {user.user.nickname}님의 좌석 위치
-            </div>
-            <div className="seat-grid">{renderGrid()}</div>
+      <Modal.Body className="modal-body">
+        <p>
+          아래 정보를 참고하여 자리를 선점해 보세요!<br></br>
+          자리를 앉지 못할 수도 있습니다.
+        </p>
+        <div>
+          <div className="seat-title">{user.user.nickname}님의 좌석 위치</div>
+          <div className="seat-grid">{renderGrid()}</div>
+        </div>
+        <div className="seat-detail-container">
+          <div className="seat-detail-item">
+            <div><span>도착지:</span> {user.endSt}</div>
           </div>
-          <ListGroup className="seat-detail-container">
-            <ListGroup.Item className="seat-detail-item">
-              <span>도착지:</span> {user.endSt}
-            </ListGroup.Item>
-            <ListGroup.Item className="seat-detail-item">
-              <span>신발 착장:</span> {user.clothes}
-            </ListGroup.Item>
-          </ListGroup>
-        </Modal.Body>
+          <div className="seat-detail-item">
+            <div><span>신발 착장:</span> {user.clothes}</div>
+          </div>
+        </div>
+      </Modal.Body>
 
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            닫기
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          닫기
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
