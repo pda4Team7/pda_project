@@ -141,10 +141,10 @@ const SeatInfo = () => {
 
   return (
     <div className="seatInfo">
-      <Image onClick={handleBackPage} className="icon" src={backIcon} />
       {/* 출발역 > 도착역 */}
       <div className="directionDiv">
-        <p>{`${startSt} > ${endSt}`}</p>
+      <Image onClick={handleBackPage} className="back-icon" src={backIcon} />
+      <p>{`${startSt} > ${endSt}`}</p>
       </div>
 
       <div className="firstInfoDiv">
@@ -155,16 +155,18 @@ const SeatInfo = () => {
         </p>
       </div>
 
+
+    <section className="seat-input-box">
       <div className="inputDiv">
-        <div className="inputDivFirstInfo">
-          <p>내 좌석 정보 공유하기</p>
-        </div>
+        <div className="info-text-group">
+          <p id="info-big-text">내 좌석 정보 공유하기</p>
         <div className="inputDivSecondInfo">
           <p>
-            나의 좌석 위치와 어디 역에서 내리는지 공유해주세요.
+            나의 좌석 위치와 내리는 역을 공유해주세요.
             <br />
             서서 가는 사람들에게 소중한 정보가 될 거예요.
           </p>
+        </div>
         </div>
 
         {/* 라인 */}
@@ -178,6 +180,7 @@ const SeatInfo = () => {
         </div>
 
         {/* 도착지 */}
+        <div className="info-input-box">
         <span className="inputDivGoal">
           <p>도착지: </p>
           <p id="endSt">{endSt}</p>
@@ -189,11 +192,11 @@ const SeatInfo = () => {
           <input
             type="text"
             value={clothes}
-            placeholder="파란색 컨버스"
+            placeholder="ex. 파란색 컨버스"
             onChange={(e) => setClothes(e.target.value)}
           />
         </span>
-
+        </div>
         {/* 예시 문구 */}
         <p className="inputDivExample">
           신발 색깔 혹은 나를 구분할 수 있는 착장 정보를 간단하게 알려주세요.
@@ -205,6 +208,7 @@ const SeatInfo = () => {
           내 정보 등록하기
         </Button>
       </div>
+      </section>
     </div>
   );
 };

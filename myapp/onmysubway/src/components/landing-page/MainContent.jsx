@@ -50,7 +50,7 @@ const MainContent = () => {
                         {/* 타이틀 */}
                         {/* <h2 id="main-title">On My Subway</h2> */}
                         {/* 로그인 및 회원가입 버튼 */}
-                        <div className="main-btn-group animate__animated animate__fadeInUp">
+                        <div className="main-btn-group animate__animated animate__fadeIn">
                             <Button variant="primary" id="btn-main-login">
                                 <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
                                     Log In
