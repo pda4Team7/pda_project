@@ -1,5 +1,18 @@
 @import "../../index.css";
 
+.icon {
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  width: 30px;
+  opacity: 0.2;
+  position: fixed;
+}
+
+.icon:hover {
+  opacity: 0.5;
+}
+
 .standing-page {
   display: flex;
   flex-direction: column;
