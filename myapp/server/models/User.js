@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  // 마지막 티켓 사용 시각
+  last_ticket_use: {
+    type: Date, 
+    default: "2000-01-01"
+  }
 });
 
 // 회원가입
