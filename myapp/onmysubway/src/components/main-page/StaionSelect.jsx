@@ -289,7 +289,9 @@ export default function StaionSelect({
         >
           {/* 모달 */}
           {depart === elem.name && (
-            <div className="select-depart-arr left"><i class="fa-solid fa-check"></i>출발</div>
+            <div className="select-depart-arr left">
+              <i className="fa-solid fa-check"></i>출발
+            </div>
           )}
           <div className="station-item">
             <div className="station-select">
@@ -333,7 +335,9 @@ export default function StaionSelect({
           </div>
           {/* 모달 */}
           {arr === elem.name && (
-            <div className="select-depart-arr right"><i class="fa-solid fa-check"></i>도착</div>
+            <div className="select-depart-arr right">
+              <i className="fa-solid fa-check"></i>도착
+            </div>
           )}
         </div>
       ))}

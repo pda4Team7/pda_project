@@ -257,14 +257,14 @@
   width: 100%;
 }
 #stand-state{
-  position: absolute;
-  top: 45vh;
-  left: 6vh;
+  position: relative;
+  top: 1vh;
+  left: 1vh;
 }
 #sit-state{
-  position: absolute;
-  top: 45vh;
-  left: 25.5vh;
+  position: relative;
+  top: 1vh;
+  left: 1vh;
 }
 .form-check {
   margin: 0 !important;
