@@ -25,7 +25,7 @@ export default function UserInfo({
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal centered show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>추가 정보를 입력해주세요</Modal.Title>
         </Modal.Header>

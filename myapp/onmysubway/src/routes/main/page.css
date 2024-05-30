@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   font-family: var(--kr-font-family);
+  background: linear-gradient(135deg, #BCD2FF, #9d7bfe);
 }
 .modal {
   font-family: var(--kr-font-family);
@@ -21,7 +22,7 @@
   color: var(--dark-blue);
 }
 
-.user-navigation-tab {
+/* .user-navigation-tab {
   padding-top: 6vh;
   padding-bottom: 6vh;
   width: 100vw;
@@ -30,6 +31,50 @@
   top: 0;
   background-color: var(--light-white-gray);
   box-shadow: 0px 6px 10px 1px #00000028;
+} */
+.nav-toggle {
+  position: fixed;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: transparent;
+    border: none;
+}
+.nav-toggle > img {
+  max-width: 20vw;
+}
+
+.user-navigation-tab {
+  width: 100vw;
+  padding-bottom: 5vh;
+  z-index: 1;
+}
+
+.user-profile-group-margin {
+  margin-top: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+
+  background: rgb(255 255 255 / 23%);
+  border-radius: 20px;
+  width: 90vw;
+  padding: 20px;
+}
+
+.user-profile-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
+  padding: 0px;
+}
+
+.user-profile-group.open {
+  max-height: 200px;
 }
 
 .user-image {
@@ -46,13 +91,17 @@
 
 #btn-my-info {
   font-size: 0.7em;
-  /* background-color: #22368c; */
   border: none;
   white-space: pre-line;
   text-align: center;
   display: inline-block;
   /* white-space: normal;
   word-wrap: break-word; */
+}
+
+#btn-user-info {
+  background-color: var(--dark-blue);
+  border: none;
 }
 
 /* -- Component2: subway-selection -- */
@@ -64,6 +113,7 @@
   width: 100%;
   z-index: 0;
   background-color: var(--light-gray);
+  border-radius: 30px;
 }
 
 .subway-select-group {
@@ -71,8 +121,24 @@
   width: 90vmin;
 }
 
-#subway-select-text {
+.subway-text-group {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+#subway-icon {
+  width: 10vw;
+  padding-bottom: 2vw;
+}
+
+#subway-big-text {
   font-weight: 800;
+}
+
+#subway-select-text {
+  font-size: small;
+  font-weight: 300;
 }
 
 .subway-select-number {
@@ -85,7 +151,7 @@
 .subway-direction-group {
   display: flex;
   margin-top: 2.5vh;
-  margin-bottom: 2.5vh;
+  margin-bottom: 1vh;
   font-size: small;
   font-weight: 480;
 }
@@ -113,10 +179,21 @@
   text-align: center;
 }
 
+
 #sub-dir-0,
 #sub-dir-1 {
   flex: 1;
   text-align: center;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+#sub-dir-0 {
+  padding-right: 8vw;
+}
+
+#sub-dir-1 {
+  padding-left: 8vw;
 }
 
 /* 출발역 & 도착역 선택 창*/
@@ -155,6 +232,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
+  
 }
 
 .station-select-line {
@@ -207,14 +285,20 @@
   position: absolute;
   top: 35%;
   align-items: center;
+  font-size: 0.6em;
+  font-weight: 400;
 }
 
+
+
 .left {
-  right: 83vw;
+  right: 80vw;
+  background-color: rgba(230, 95, 54, 0.14)
 }
 
 .right {
-  left: 83vw;
+  left: 80vw;
+  background-color: rgba(98, 217, 29, 0.14)
 }
 
 /* 유저 입력창으로 넘어가는 모달 */
@@ -257,14 +341,14 @@
   width: 100%;
 }
 #stand-state{
-  position: absolute;
-  top: 45vh;
-  left: 6vh;
+  position: relative;
+  top: 1vh;
+  left: 1vh;
 }
 #sit-state{
-  position: absolute;
-  top: 45vh;
-  left: 25.5vh;
+  position: relative;
+  top: 1vh;
+  left: 1vh;
 }
 .form-check {
   margin: 0 !important;

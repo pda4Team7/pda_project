@@ -1,11 +1,10 @@
 @import "../../index.css";
 
-.main-home {
-  font-family: var(--kr-font-family);
-}
 
 .main-home {
   height: 100vh;
+  background-color: #BCD2FF;
+  position: relative;
 }
 
 .main-img {
@@ -21,18 +20,40 @@
 }
 
 .back-img {
+  /* 가로너비 너무 넓으면 그냥 확대됨 */
   min-width: 100vw;
-  max-height: 150vh;
+  max-height: 50vh;
   z-index: 0;
 }
+
+.subway-side {
+  position: absolute;
+  min-height: 100vh;
+  z-index: 3;
+}
+
+#subway-title {
+   position: absolute;
+    width: 100vw;
+    top: 10%;
+    left: 0%;
+    /* transform: translate(-50%, -50%); */
+}
+
+.subway-bottom {
+  position: absolute;
+    bottom: 0;
+}
+
 
 .main-box {
   position: absolute;
   margin-top: 3vmax;
   height: 20vh;
-  top: 50vh;
+  top: 80vh;
   left: 50vw;
   transform: translateX(-50%);
+  z-index: 5;
 }
 
 #main-title {
@@ -40,6 +61,7 @@
   font-weight: 400;
   color: black;
   text-align: center;
+  font-family: var(--kr-font-family);
 }
 
 .main-btn-group {
@@ -55,7 +77,6 @@
   font-style: italic;
   border: none;
 
-  z-index: 2;
   background-color:#4461F2 ;
   border-radius: 30px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -79,5 +100,10 @@
   z-index: 2;
   background-color:white ;
   border-radius: 30px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);  
+}
+
+
+#btn-main-login > a, #btn-main-register > a {
+  font-family: 'ABeeZee';
 }

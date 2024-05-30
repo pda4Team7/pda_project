@@ -68,10 +68,17 @@ router.post("/", authenticate, async (req, res) => {
 
   if (isSeated) {
     // 앉아 있을 경우 열람권 +1
-    const newTicket = req.user.ticket;
-    User.findByIdAndUpdate(req.user._id, {
-      ticket: newTicket + 1,
-    }).then((e) => console.log(e));
+    const userTmp = await User.findById(req.user._id);
+    const oneDay = 24 * 60 * 60 * 1000;
+    let now = new Date();
+    if (now - userTmp.last_ticket_add >= oneDay || !userTmp.last_ticket_add) {
+      userTmp.ticket += 1;
+      userTmp.last_ticket_add = now;
+    }
+    await userTmp.save();
+    // User.findByIdAndUpdate(req.user._id, {
+    //   ticket: newTicket + 1,
+    // }).then((e) => console.log(e));
   }
 
   SeatInfo.create({

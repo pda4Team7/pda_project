@@ -2,23 +2,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
-.icon {
-  width: 30px;
-  opacity: 0.2;
-  padding-top: 20px;
-  margin-left: 20px;
+
+.seatInfo{
+  font-family: "Noto Sans KR";
+  background-color: var(--light-white-gray);
 }
 
-.icon:hover {
+.back-icon {
+  opacity: 0.2;
+  position: absolute;
+  width: 30px;
+  top: 2.5vh;
+  left: 3vh;
+
+}
+
+.back-icon:hover {
   opacity: 0.5;
 }
 
-.seatInfo > div {
-  display: flex;
-  flex-direction: column;
+.directionDiv {
   align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 /* SeatInfo.css */
@@ -52,41 +56,56 @@
 }
 
 .directionDiv {
-  height: 32px;
-  padding-top: 34px;
+  padding-top: 3vh;
 }
 
 .directionDiv > p {
-  font-size: 27px;
-  font-family: "Roboto", sans-serif;
+  font-size: 0.9em;
+  font-weight: 500;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: 3vh;
+}
+
+.info-text-group {
+  margin-top:2vh;
+  margin-bottom: 2vh;
+  padding: 5px;
+  line-height: 1.7;
 }
 
 .firstInfoDiv {
-  padding-top: 70px;
+  padding-top: 10vh;
+  padding-left: 5vw;
 }
 
 .firstInfoDiv > p {
   text-align: left;
-  width: 355px;
   font-size: 28px;
   font-weight: bold;
-  font-family: "Noto sans KR", sans-serif;
+  font-family: "Noto sans KR";
 }
 
 .inputDiv {
-  width: 403px;
-  height: 599px;
-  margin: 0 auto;
+ 
+  margin: 2vw;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0px 10px 10px rgba(130, 130, 130, 0.3); /* X, Y, Blur Radius, Color */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;  
+  padding: 20px;
 }
 
 .inputDiv > div {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  margin: auto 0;
+}
+
+#info-big-text {
+  font-weight: 600;
 }
 
 .inputDivFirstInfo {
@@ -96,91 +115,74 @@
 .inputDivFirstInfo > p {
   font-size: 18px;
   font-weight: bold;
-  font-family: "Inter", sans-serif;
 }
 
-.inputDivSecondInfo {
-  height: 30px;
-  height: 28px;
-}
 
 .inputDivSecondInfo > p {
-  width: 353px;
-  height: 20px;
-  font-size: 14px;
+  font-size: 0.9em;
   color: #475467;
   margin-bottom: 0;
 }
 
 .divLine {
-  width: 243px;
   border-top: 1px solid #e4e4e4;
 }
 
 .inputDivThirdInfo > p {
-  font-size: 15px;
+  text-align: center;
+  font-size: 1em;
   font-weight: bold;
-  font-family: "Inter", sans-serif;
 }
 
-.inputDivThirdInfo > div {
-  height: 79px;
-  width: 360px;
+.inputDivThirdInfo {
+  margin-top: 3vh;
 }
 
 .inputDivGoal {
+  padding: 10px;
   background-color: #f2f4f6;
   border-radius: 10px;
-  width: 343px;
-  height: 52px;
   display: flex;
   flex-direction: row;
-  text-align: center;
-  justify-content: left;
 }
 
 .inputDivGoal > p {
   color: #22368c;
-  margin: 0 10px;
-  width: 70px;
-  height: 20px;
-  padding-top: 15px;
   font-weight: bold;
-  font-family: "Nunito" sans-serif;
+  margin: 0;
 }
 
 #endSt {
   color: black;
-  width: 200px;
   text-align: left;
-  margin-left: 0;
+  margin-left: 2.5vw;
+  
 }
 
+/* input 2 */
 .inputDivInput {
-  margin-top: 20px;
+  margin-top: 1vh;
   background-color: #f2f4f6;
   border-radius: 10px;
-  width: 343px;
-  height: 52px;
   display: flex;
   flex-direction: row;
+  padding: 10px;
 }
 
+/* 신발 착장 */
 .inputDivInput > p {
-  padding-top: 13px;
+  margin: 0;
   color: #22368c;
   font-weight: bold;
-  text-align: left;
-  padding-left: 19px;
-  width: 100px;
 }
 
+/* 파란색 컨버스 */
 .inputDivInput > input {
   background: none;
   border: none;
   outline: none;
-  padding-left: 15px;
-  padding-top: 1px;
+  font-size: 0.9em;
+  margin-left: 2vw;
 }
 
 .inputDivInput > input::placeholder {
@@ -192,12 +194,10 @@
   font-size: 11px;
   font-weight: bold;
   text-align: left;
-  width: 319px;
   margin-top: 15px;
 }
 
 #button {
-  width: 334px;
   background-color: #4461f2;
-  margin-bottom: 30px;
+  margin-bottom: 1vh;
 }
