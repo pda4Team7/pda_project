@@ -289,8 +289,8 @@ export default function StaionSelect({
         >
           {/* 모달 */}
           {depart === elem.name && (
-            <div className="select-depart-arr left">
-              <i className="fa-solid fa-check"></i>출발
+            <div className="select-depart-arr left animate__animated animate__fadeInUp">
+              <i className="fa-solid fa-check animate__animated animate__fadeInUp"></i>출발
             </div>
           )}
           <div className="station-item">
@@ -335,8 +335,8 @@ export default function StaionSelect({
           </div>
           {/* 모달 */}
           {arr === elem.name && (
-            <div className="select-depart-arr right">
-              <i className="fa-solid fa-check"></i>도착
+            <div className="select-depart-arr right  animate__animated animate__fadeInUp">
+              <i className="fa-solid fa-check  animate__animated animate__fadeInUp"></i>도착
             </div>
           )}
         </div>
