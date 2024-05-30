@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./seatInfo.css";
 import { fetchCreateSeatInfo } from "../../lib/apis/seatInfo";
 import { useLocation } from "react-router-dom";
+import backIcon from "../../assets/back-icon.png";
 
 // 출발역, 도착역, 앉았는 지 아닌지 여부를 받아야 함
 const SeatInfo = () => {
@@ -110,6 +111,7 @@ const SeatInfo = () => {
     return grid;
   };
 
+  // 정보 등록 핸들러
   const handleSeatInfoRegisterClick = () => {
     const data = {
       user: user,
@@ -132,8 +134,14 @@ const SeatInfo = () => {
       });
   };
 
+  // 뒤로가기 핸들러
+  const handleBackPage = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="seatInfo">
+      <Image onClick={handleBackPage} className="icon" src={backIcon} />
       {/* 출발역 > 도착역 */}
       <div className="directionDiv">
         <p>{`${startSt} > ${endSt}`}</p>
