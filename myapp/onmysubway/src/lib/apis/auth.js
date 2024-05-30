@@ -20,19 +20,29 @@ export async function serverLogin({ nickname, password }) {
 
 // 회원가입 요청
 export async function serverSignUp({ nickname, password }) {
-  try {
-    const resp = await service.post("/signup", {
-      nickname: nickname,
-      password: password,
-    });
-    return [true, resp.data];
-  } catch (err) {
-    if (err.response && err.response.data && err.response.data.message) {
-      return err.response.data.message; // 서버가 제공하는 에러 메시지 리턴
-    } else {
-      return [false, err.message]; // 기본 에러 메시지 리턴
+
+    try {
+        const resp = await service.post("/signup", {
+            nickname: nickname,
+            password: password,
+          });
+          return [true,resp.data];
+    } catch(err){
+        return [false,err.message]; // 기본 에러 메시지 리턴        
     }
-  }
+}
+
+// 닉네임 중복 여부 확인 요청
+export async function nicknameCheck({ nickname }) {
+    try {
+        const resp = await service.get("/signup/check", {
+            params: {
+                nickname: nickname,}
+          });
+          return [true,resp.data];
+    } catch(err){
+        return [false,err];      
+    }
 }
 
 // 유저 정보 요청
