@@ -5,15 +5,22 @@ import userimg from "~/assets/user_profile.png";
 import Image from "react-bootstrap/Image";
 import { fetchSeatInfoList } from "~/apis/seatInfo";
 import SeatDetailInfo from "~/components/standing-page/SeatDetailInfo";
+import { useNavigate } from "react-router-dom";
+import backIcon from "../../assets/back-icon.png";
 
 const SeatList = () => {
   const [seatList, setSeatList] = useState([]);
   const [show, setShow] = useState(false);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
   const handleClose = () => setShow(false);
   const chooseUser = (user) => {
     setUser(user);
     setShow(true);
+  };
+  const handleBackPage = () => {
+    navigate(-1);
   };
 
   useEffect(() => {
@@ -24,13 +31,16 @@ const SeatList = () => {
           startSt: elem.startSt,
           endSt: elem.endSt,
           seatNum: elem.seatNum,
-          clothes: elem.clothes
+          clothes: elem.clothes,
         };
       });
       setSeatList(newSeatList);
     });
   }, []);
 
+  function gotoFirst() {
+    navigate("/main");
+  }
   // debug용. 데이터가 없을 때
   const seatInfo = [
     { name: "최지연", startSt: "고속터미널", endSt: "상도" },
@@ -42,26 +52,38 @@ const SeatList = () => {
 
   return (
     <>
+      <Image onClick={handleBackPage} className="icon" src={backIcon} />
       <div className="main-container">
-        <div className="seat-info-title">앉아갈 수 있는 정보</div>
+        <div className="seat-info-title">좌석 정보 리스트</div>
         <ListGroup as="ol" className="seat-info-container">
           {seatList.map((elem, i) => (
             <ListGroup.Item as="li" key={"seat-item " + i}>
               <div className="seat-info-item">
                 <Image src={userimg} roundedCircle />
                 <div className="seat-info-text">
-                  <div>{elem.user.nickname}</div>
+                  <div className="seat-info-name">{elem.user.nickname}</div>
                   <div>
                     {elem.startSt} &gt; {elem.endSt}
                   </div>
                 </div>
-                <Button variant="primary" onClick={() => chooseUser(elem)}>
+                <Button
+                  className="seat-info-btn"
+                  variant="primary"
+                  onClick={() => chooseUser(elem)}
+                >
                   좌석보기
                 </Button>
               </div>
             </ListGroup.Item>
           ))}
         </ListGroup>
+        <Button
+          variant="primary"
+          onClick={gotoFirst}
+          className="back-btn"
+        >
+          처음으로 돌아가기
+        </Button>{" "}
       </div>
       {show === true ? (
         <SeatDetailInfo show={show} handleClose={handleClose} user={user} />

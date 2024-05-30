@@ -16,16 +16,19 @@ const SignUp = () => {
     // 회원가입 성공 모달창 state 및 로그인 페이지로 리다이렉션하기위한 navigate함수
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
+    // 닉네임 중복체크 state
+    const [nicknamestate, setNicknameState] = useState(false)
     
 
     // 닉네임 중복확인 여부 체크
-    const handleNameCheck = () => {
-      
+    const handleNameCheck = () => {   
       try {
         nicknameCheck({nickname}).then((resp)=>{
           if (resp[0]===true){
+            setNicknameState(true);
             alert('사용가능한 닉네임입니다.');            
           } else {
+            setNicknameState(false);
             alert('중복된 닉네임입니다. 다른 닉네임을 사용해주세요.'); // 중복X시 check false       
           }        
         }) 
@@ -96,14 +99,18 @@ const SignUp = () => {
           <div className='signup-content'>          
             <Form.Group>
                 <div className='signup-input-group'>
-                  <div className='nickname-group'>            
+                  <div className='nickname-group'>
                     <Form.Control id='signup-email'
                         type="text"
                         placeholder="Nickname"
                         value={nickname}
                         onChange={(e) => setNickname(e.target.value)}
                     />                    
-                    <Button variant="light" id="btn-nicknamecheck" onClick={handleNameCheck}>중복확인</Button>
+                    <Button variant="secondary" id="btn-nicknamecheck" onClick={handleNameCheck}>
+                    중복확인</Button>                    
+                    {nicknamestate?(
+                      <Image src={check_icon}></Image>
+                  ):(<Image src={xcheck_icon}></Image>)}
                   </div>
                   <div className='password-input-group'>
                     <Form.Control id='signup-password'
