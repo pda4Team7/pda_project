@@ -37,7 +37,7 @@ function userReducer(state = initialState, action) {
         userToken: action.payload.user_token,
       };
     case LOGGED_OUT:
-      return { ...state, userId: "" };
+      return { ...state, userId: "", userName: "", userToken: "", endSt: "" };
     case SET_END_ST:
       return { ...state, endSt: action.payload.endSt };
     default:

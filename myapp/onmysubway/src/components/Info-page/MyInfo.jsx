@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import useredit from "~/assets/user_edit.svg";
 import logout from "~/assets/user_logout.svg";
 import backIcon from "../../assets/back-icon.png";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "~/store/reducers/user";
 
 const MyInfo = () => {
   // 첫 렌더링시 user의 정보를 get요청 보내서 가져옴
@@ -22,6 +24,7 @@ const MyInfo = () => {
   const [pwchange, setPasswordChange] = useState(false);
   const [pwcorrect, setPasswordCorrect] = useState();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     try {
@@ -72,6 +75,8 @@ const MyInfo = () => {
     serverLogout().then((success) => {
       console.log(success);
       if (success !== false) {
+        // 다시 redux 설정 지우기
+        dispatch(logoutUser());
         navigate("/");
       }
     });
