@@ -50,11 +50,33 @@ router.post("/signup", async (req, res, next) => {
     const { nickname, password } = req.body;
     const user = await User.signUp(nickname, password);
     res.status(201).json(user);
+
   } catch (error) {
     res.status(400);
     next(error);
   }
 });
+
+
+// 닉네임 중복 확인
+router.get('/signup/check',async (req,res,next)=>{
+  try{
+    console.log("check")
+    const { nickname } = req.query;
+    if (!nickname) {
+      return res.status(400).json({ message: "닉네임을 제공해 주세요." });
+    }
+    // 닉네임 중복 체크
+    const existingUser = await User.findOne({ nickname });
+    if (existingUser) {
+      return res.status(400).json({ message: "중복되는 닉네임이 존재합니다." });
+    }
+    res.status(200).json({ message: "사용 가능한 닉네임입니다." });
+  } catch (error) {
+    console.log(error);
+  }
+})    
+    
 
 // 로그인
 router.post("/signin", async (req, res, next) => {
@@ -215,6 +237,24 @@ router.put("/ticket", authenticate, async (req, res, next) => {
       message: "열람권이 +1 되었습니다!",
       nowTicketNum: user.ticket,
     });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// 현재 비밀번호 일치하는지 확인하는 api
+router.post("/check", authenticate, async (req, res, next) => {
+  try {
+    const isMatch = await bcrypt.compare(
+      req.body.password,
+      req.body.saltPassword
+    );
+    if (isMatch) {
+      return res.status(200).json({ isCorrect: true });
+    } else {
+      console.log(`${req.body.saltPassword} - ${req.body.password}`);
+      return res.status(400).json({ isCorrect: false });
+    }
   } catch (error) {
     next(error);
   }

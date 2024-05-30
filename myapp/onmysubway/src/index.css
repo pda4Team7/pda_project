@@ -1,3 +1,5 @@
+
+
 #root {
   height: 100vh;
   font-family: 'Alef';
@@ -9,6 +11,7 @@ input {
 }
 
 :root {
+  height: 100vh;
   /* font-family */
   --kr-font-family: "Noto Sans KR";
   /* --eng-font-family: */
@@ -18,7 +21,8 @@ input {
   --light-gray: #eaeaea;
   --light-dark-gray: #DCDCDC;
   --dark-blue: #22368c;
-  --blue: #007bff;
+  --blue: #007bff; 
+
 }
 /* 
 a {
