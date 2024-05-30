@@ -220,4 +220,22 @@ router.put("/ticket", authenticate, async (req, res, next) => {
   }
 });
 
+// 현재 비밀번호 일치하는지 확인하는 api
+router.post("/check", authenticate, async (req, res, next) => {
+  try {
+    const isMatch = await bcrypt.compare(
+      req.body.password,
+      req.body.saltPassword
+    );
+    if (isMatch) {
+      return res.status(200).json({ isCorrect: true });
+    } else {
+      console.log(`${req.body.saltPassword} - ${req.body.password}`);
+      return res.status(400).json({ isCorrect: false });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
