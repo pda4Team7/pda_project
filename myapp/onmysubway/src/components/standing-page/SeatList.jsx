@@ -78,7 +78,7 @@ const SeatList = () => {
           ))}
         </ListGroup>
         <Button
-          variant="outline-primary"
+          variant="primary"
           onClick={gotoFirst}
           className="back-btn"
         >
