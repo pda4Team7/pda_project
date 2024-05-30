@@ -50,11 +50,33 @@ router.post("/signup", async (req, res, next) => {
     const { nickname, password } = req.body;
     const user = await User.signUp(nickname, password);
     res.status(201).json(user);
+
   } catch (error) {
     res.status(400);
     next(error);
   }
 });
+
+
+// 닉네임 중복 확인
+router.get('/signup/check',async (req,res,next)=>{
+  try{
+    console.log("check")
+    const { nickname } = req.query;
+    if (!nickname) {
+      return res.status(400).json({ message: "닉네임을 제공해 주세요." });
+    }
+    // 닉네임 중복 체크
+    const existingUser = await User.findOne({ nickname });
+    if (existingUser) {
+      return res.status(400).json({ message: "중복되는 닉네임이 존재합니다." });
+    }
+    res.status(200).json({ message: "사용 가능한 닉네임입니다." });
+  } catch (error) {
+    console.log(error);
+  }
+})    
+    
 
 // 로그인
 router.post("/signin", async (req, res, next) => {
