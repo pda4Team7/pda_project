@@ -1,11 +1,18 @@
 .info-page{
     display: flex;
-    justify-content: center;    
+    justify-content: center;
+    font-family: 'Noto Sans KR';
+    font-weight: 350;
+    font-size: 15px;
 }
 
 .info-box{    
     margin: 0 auto;
-    padding: 5vmax;
+    padding-top: 5vmax;
+    padding-bottom: 5vmax;
+    padding-left: 3vmax;
+    padding-right: 3vmax;
+
     width: 80vmin;
     max-width: 500px;
     background-color: white;
@@ -18,6 +25,7 @@
     border-radius: 12px;
 }
 
+
 .user-info-section > section {
     margin-top: 3vh;
 }
@@ -25,16 +33,77 @@
 .profile-section {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 3vw;
     margin-bottom : 3vh;
+}
+
+.profile-section > p {
+    font-weight: 500;
+    font-size: 1.3em;
+    margin-bottom: 0;
+}
+
+.profile-section > img {
+    width: 18vw;
+    max-width: 25%;
 }
 
 .vertical-line {
     width: 60%;               
-    height: 0.5px;            
+    height: 0.1px;            
     background-color: #C4C4C4;
-    margin: 0 auto;  
+    opacity: 30%;
+    margin: 0 auto;
 }
 
-.user-ticket-section {
+section {
+    padding: 6px;
+}
+
+.user-ticket-title, .user-edit-title {
+    display: flex;
+    gap: 5px;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+.user-ticket-title > p , .user-edit-title > p {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #202244;
+}
+
+
+#formBasicPasswordbf, #formBasicPasswordaf {
+    font-size: 0.9em;
+    margin-bottom: 1vmin;
+    background-color: rgb(34,54,140,0.05);
+    border: none;
+}
+
+
+
+
+.user-logout-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgb(193,195,166,0.15);
+    border-radius: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.user-logout-title > button {
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    color: #202244;
+    padding-left: 0;
+}
+
+img {
+    padding-left: 10px;
+    padding-right: px;
 }
