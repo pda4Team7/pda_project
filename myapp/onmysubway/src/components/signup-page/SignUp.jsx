@@ -103,11 +103,12 @@ const SignUp = () => {
                         value={nickname}
                         onChange={(e) => setNickname(e.target.value)}
                     />                    
-                    <Button id="btn-nicknamecheck" onClick={handleNameCheck}>중복확인</Button>
-                    </div>
+                    <Button variant="light" id="btn-nicknamecheck" onClick={handleNameCheck}>중복확인</Button>
+                  </div>
+                  <div className='password-input-group'>
                     <Form.Control id='signup-password'
                         type="Password"
-                        plaeholder="Password"
+                        placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
@@ -132,6 +133,7 @@ const SignUp = () => {
                 
                     {/* 비밀번호 길이 경고 메시지 */}
                     {passwordLengthWarning}
+                  </div>
                 </div>
             </Form.Group>
             <Button id='btn-signup-submit' variant="primary" type="submit">
