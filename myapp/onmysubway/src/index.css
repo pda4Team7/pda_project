@@ -1,4 +1,4 @@
-/* #root {
+#root {
   height: 100vh;
   font-family: 'Alef';
   background-color: #F6F6F6;
@@ -6,7 +6,7 @@
 
 input {
   font-family: 'Nunito';
-} */
+}
 
 :root {
   /* font-family */
@@ -16,6 +16,7 @@ input {
   /* color */
   --light-white-gray: #f6f6f6;
   --light-gray: #eaeaea;
+  --light-dark-gray: #DCDCDC;
   --dark-blue: #22368c;
   --blue: #007bff;
 }
