@@ -16,6 +16,7 @@ import backIcon from "../../assets/back-icon.png";
 import imgIcon from "../../assets/img-icon.png";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "~/store/reducers/user";
+import Loading from "../loading-page/Loading";
 
 const MyInfo = () => {
   // 첫 렌더링시 user의 정보를 get요청 보내서 가져옴
@@ -135,7 +136,7 @@ const MyInfo = () => {
   // 응답 전에 user 정보를 렌더링하려고 하면 null인 상태에서 렌더링이 먼저 됨
   // => user가 null인 경우는 Loading화면 표시
   if (!user) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   // 뒤로가기 핸들러

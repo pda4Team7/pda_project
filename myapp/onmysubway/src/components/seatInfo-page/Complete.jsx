@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import infoComplete from "~/assets/infoComplete.svg";
 import infoCompleteCircle from "~/assets/infoCompleteCircle.svg";
 import "./complete.css";
+import Loading from "../loading-page/Loading";
 
 const Complete = () => {
   const navigate = useNavigate();
@@ -43,8 +44,9 @@ const Complete = () => {
               확인
             </Button>
           </>
-        ) : ( // 이미지가 로드되지 않은 경우
-          <div>로딩중</div>
+        ) : (
+          // 이미지가 로드되지 않은 경우
+          <Loading />
         )}
       </div>
     </div>
