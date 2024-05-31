@@ -65,7 +65,10 @@ export default function StaionSelect({
   const handleClose = () => setShow(false); // 모달 창 닫음
   const handleOpen = () => setShow(true); // 모달 창 열기
   const handleSubmit = () => {
-    // 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
+    if (trainNumber === ""){
+      alert("칸 번호를 작성해주세요!")
+    } else{
+// 이때 만일 고객이 서있으면, state를 true로, 아니면 false로 설정
     // userState === "stand-state" ? setUserState(true) : setUserState(false);
     // 1. 만일 앉아 있는 사람이라면 -> 다음 페이지로 넘김
     if (userState === "sit-state") {
@@ -100,6 +103,8 @@ export default function StaionSelect({
         navigate("/standing");
       });
     }
+    }
+    
   };
 
   // 이후에 이건 서버에서 받아올 것
