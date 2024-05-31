@@ -126,3 +126,15 @@ export async function serverGetImage() {
     return false;
   }
 }
+
+export async function serverOneUserGetImage(userId) {
+  try {
+    const resp = await service.get(`/img/${userId}`, {
+      responseType: "blob",
+    });
+
+    return resp.data;
+  } catch (error) {
+    return false;
+  }
+}

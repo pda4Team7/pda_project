@@ -71,7 +71,7 @@
   font-size: 0.7rem !important;
 }
 
-.back-btn{
+.back-btn {
   margin-top: 3vh;
   width: 50vw !important;
 }
@@ -120,4 +120,8 @@
 .seat-detail-item span {
   font-weight: bold;
   color: #22368c;
+}
+
+.image {
+  width: 40px;
 }
