@@ -23,17 +23,23 @@ export async function fetchCreateSeatInfo({
   clothes,
   seatNum,
 }) {
-  const resp = await service.post("/", {
-    user: user,
-    startSt: startSt,
-    endSt: endSt,
-    compartment: compartment,
-    isSeated: isSeated,
-    clothes: clothes,
-    seatNum: seatNum,
-  });
-
-  return resp.data;
+  try {
+    console.log("sdfds")
+    const resp = await service.post("/", {
+      user: user,
+      startSt: startSt,
+      endSt: endSt,
+      compartment: compartment,
+      isSeated: isSeated,
+      clothes: clothes,
+      seatNum: seatNum,
+    });
+  
+    return resp.data;
+  } catch(err) {
+    return console.log("dsfds")
+  }
+  
 }
 
 // 좌석 리스트 정보 조회

@@ -25,6 +25,13 @@
   align-items: center;
 }
 
+.seatInfo-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
+}
+
 /* SeatInfo.css */
 .seat-grid {
   display: flex;
@@ -80,7 +87,12 @@
   padding-left: 5vw;
 }
 
-.firstInfoDiv > p {
+#info-small-text {
+  font-size: 0.9em;
+  font-weight: 320;
+}
+
+#info-big-text {
   text-align: left;
   font-size: 28px;
   font-weight: bold;
@@ -92,12 +104,14 @@
   margin: 2vw;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 10px 10px rgba(130, 130, 130, 0.3); /* X, Y, Blur Radius, Color */
+  box-shadow: 0px 10px 10px rgba(130, 130, 130, 0.232); /* X, Y, Blur Radius, Color */
   display: flex;
   flex-direction: column;
-  gap: 10px;  
+  gap: 3vh; 
   padding: 20px;
 }
+
+
 
 .inputDiv > div {
   display: flex;
@@ -106,10 +120,6 @@
 
 #info-big-text {
   font-weight: 600;
-}
-
-.inputDivFirstInfo {
-  height: 10px;
 }
 
 .inputDivFirstInfo > p {
@@ -132,10 +142,6 @@
   text-align: center;
   font-size: 1em;
   font-weight: bold;
-}
-
-.inputDivThirdInfo {
-  margin-top: 3vh;
 }
 
 .inputDivGoal {
@@ -197,7 +203,26 @@
   margin-top: 15px;
 }
 
-#button {
+#info-button {
   background-color: #4461f2;
   margin-bottom: 1vh;
+  padding: 1vh;
+  border-radius: 7px;
+}
+
+#seat-info-modal {
+  border-top: none;
+  width: 85vw;
+  margin: 0 auto;
+}
+
+#seat-info-modal > .modal-content > .modal-body {
+  margin-top: 3vh;
+}
+
+#seat-info-modal > .modal-content > .modal-footer > button {
+  margin: 0 auto;
+  width: 100%;
+  background-color: gray;
+  border: none;
 }

@@ -92,7 +92,7 @@
 #btn-my-info {
   font-size: 0.7em;
   border: none;
-  white-space: pre-line;
+  white-space: pre;
   text-align: center;
   display: inline-block;
   /* white-space: normal;

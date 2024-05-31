@@ -17,8 +17,10 @@ const Finding = () => {
 
   useEffect(() => {
     fetchSeatInfoList().then((resp) => {
+      console.log(howmanyseats)
       // 몇 명이 타고 있는지 확인
       setCount(resp.length);
+      
     });
   }, []);
 
