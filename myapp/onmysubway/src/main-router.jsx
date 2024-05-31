@@ -10,6 +10,7 @@ import CompletePage from "~/routes/seatInfo/completePage";
 import SeatInfoPage from "~/routes/seatInfo/page";
 import StandingPage from "~/routes/standing/page";
 import SeatListPage from "~/routes/standing/list/page";
+import Loading from "./components/loading-page/Loading";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
   {
     path: "/info",
     element: <InfoPage />,
+  },
+  // 디버깅용
+  {
+    path: "/loading",
+    element: <Loading />,
   },
 
   {

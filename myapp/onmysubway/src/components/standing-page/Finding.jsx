@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { fetchSeatInfoList } from "~/apis/seatInfo";
 import backIcon from "../../assets/back-icon.png";
 import { useTicket } from "../../lib/apis/ticket";
+import Loading from "../loading-page/Loading";
 
 const Finding = () => {
   // ** update된 user_destination과 리스트 명수 요청해서 받아오기 !
@@ -106,7 +107,7 @@ const Finding = () => {
           </Modal>
         </div>
       ) : (
-        null
+        <Loading/>
       )}
     </>
   );
