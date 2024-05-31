@@ -7,6 +7,7 @@ import { fetchSeatInfoList } from "~/apis/seatInfo";
 import SeatDetailInfo from "~/components/standing-page/SeatDetailInfo";
 import { useNavigate } from "react-router-dom";
 import backIcon from "../../assets/back-icon.png";
+import { serverOneUserGetImage } from "~/lib/apis/auth";
 
 const SeatList = () => {
   const [seatList, setSeatList] = useState([]);
@@ -23,19 +24,45 @@ const SeatList = () => {
     navigate(-1);
   };
 
+  const fetchUserImage = async (userId) => {
+    try {
+      const resp = await serverOneUserGetImage(userId);
+      if (resp && resp instanceof Blob) {
+        return resp;
+      } else {
+        console.error("Invalid image data:", resp);
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
   useEffect(() => {
-    fetchSeatInfoList().then((resp) => {
-      const newSeatList = resp.map((elem) => {
-        return {
-          user: elem.user,
-          startSt: elem.startSt,
-          endSt: elem.endSt,
-          seatNum: elem.seatNum,
-          clothes: elem.clothes,
-        };
-      });
-      setSeatList(newSeatList);
-    });
+    const fetchData = async () => {
+      try {
+        const seatInfoList = await fetchSeatInfoList();
+        const newSeatList = await Promise.all(
+          seatInfoList.map(async (elem) => {
+            const userImage = await fetchUserImage(elem.user._id);
+            return {
+              user: elem.user,
+              startSt: elem.startSt,
+              endSt: elem.endSt,
+              seatNum: elem.seatNum,
+              clothes: elem.clothes,
+              userImage: userImage,
+            };
+          })
+        );
+        setSeatList(newSeatList);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   function gotoFirst() {
@@ -59,7 +86,15 @@ const SeatList = () => {
           {seatList.map((elem, i) => (
             <ListGroup.Item as="li" key={"seat-item " + i}>
               <div className="seat-info-item">
-                <Image src={userimg} roundedCircle />
+                <Image
+                  className="image"
+                  src={
+                    elem.userImage
+                      ? URL.createObjectURL(elem.userImage)
+                      : userimg
+                  }
+                  roundedCircle
+                />
                 <div className="seat-info-text">
                   <div className="seat-info-name">{elem.user.nickname}</div>
                   <div>
@@ -77,11 +112,7 @@ const SeatList = () => {
             </ListGroup.Item>
           ))}
         </ListGroup>
-        <Button
-          variant="primary"
-          onClick={gotoFirst}
-          className="back-btn"
-        >
+        <Button variant="primary" onClick={gotoFirst} className="back-btn">
           처음으로 돌아가기
         </Button>{" "}
       </div>
