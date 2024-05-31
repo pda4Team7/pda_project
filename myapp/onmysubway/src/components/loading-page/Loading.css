@@ -1,0 +1,6 @@
+@import '../../index.css';
+
+.main-container {
+    gap: 30px;
+    font-family: var(--kr-font-family);
+}

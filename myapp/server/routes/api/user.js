@@ -329,4 +329,29 @@ router.get("/img", authenticate, async (req, res, next) => {
   }
 });
 
+router.get("/img/:userId", authenticate, async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+
+    const user = await User.findById(userId);
+    const img = user.profile;
+
+    console.log(img);
+
+    const imagePath = path.join(__dirname, `../../public${img}`);
+
+    fs.readFile(imagePath, (err, data) => {
+      if (err) {
+        console.log("fs.readFile 에러");
+        return res.status(404).json({ message: "이미지 낫 파운드" });
+      }
+
+      res.writeHead(200, { "Content-Type": "image/jpeg" });
+      res.end(data);
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
