@@ -1,22 +1,27 @@
 @import url("//fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import "../../index.css";
+
+.total-complete {
+  height: 100vh;
+  padding: 30px;
+  font-family: var(--kr-font-family);
+}
 
 .complete {
-  background-color: white;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
 }
 
 .tottaImage {
-  padding-top: 83px;
-  padding-bottom: 60px;
+  width: 80vw;
 }
 
 .firstDiv {
-  width: 353px;
-  height: 131px;
+  width: 100%;
+  margin-top: 3vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,23 +32,21 @@
 #firstDivP1 {
   font-size: 28px;
   font-weight: bolder;
-  font-family: "Noto Sans KR", sans-serif;
 }
 
 #firstDivP2 {
-  padding-top: 18px;
+  padding-top: 1vh;
   color: #475467;
   font-size: 14px;
-  font-family: "Inter", sans-serif;
 }
 
 .secondDiv {
-  margin-top: 74px;
+  margin-top: 3vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 16px;
-  height: 56px;
+  align-items: center;
+  gap: 1vw;
 }
 
 .secondDiv > p {
@@ -51,11 +54,8 @@
   color: #4461f2;
   font-size: 20px;
   font-weight: bold;
-  font-family: "Inter", sans-serif;
 }
 
 .button {
-  width: 379px;
-  height: 44px;
-  margin: 104px;
+  width: 80%;
 }
