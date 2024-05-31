@@ -30,16 +30,20 @@ export default function UserInfo({
           <Modal.Title>추가 정보를 입력해주세요</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FormGroup as={Col} className="mb-3 train-number">
+          <FormGroup as={Col} className="train-number">
+            <div className="input-group">
             <Form.Label>칸 번호</Form.Label>
+            <div className="number-input-div">   
             <Form.Control
               className="number-input"
               required
               type="text"
-              placeholder="여기에 칸 번호를 입력하세요"
+              placeholder="ex. 5508"
               value={trainNumber}
               onChange={(e) => setTrainNumber(e.target.value)}
             />
+            </div> 
+            </div>
             <div>
               칸 번호는 열차와 열차 사이의 출입문 위 혹은 출입문에서 확인할 수
               있습니다.
@@ -66,7 +70,7 @@ export default function UserInfo({
                 <Form.Check.Label htmlFor="stand-state">
                   <div className="user-state-item">
                     <div><strong>지금 서 있어요</strong></div>
-                    <div>열람권을 사용해 좌석정보를 알 수 있어요!</div>
+                    <div className="user-state-text">열람권을 사용해 좌석정보를 알 수 있어요!</div>
                   </div>
                 </Form.Check.Label>
               </Form.Check>
@@ -88,7 +92,7 @@ export default function UserInfo({
                 <Form.Check.Label htmlFor="sit-state">
                   <div className="user-state-item">
                     <div><strong>지금 앉아있어요</strong></div>
-                    <div>본인의 정보를 남기고 열람권 1개를 획득하세요!</div>
+                    <div className="user-state-text">본인의 정보를 남기고 열람권 1개를 획득하세요!</div>
                   </div>
                 </Form.Check.Label>
               </Form.Check>

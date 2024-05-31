@@ -60,8 +60,10 @@
 }
 /* 안에 text */
 .modal-title-text {
-  font-weight: 500;
+  font-weight: 800;
+  font-size: 1.3em;
 }
 .modal-body {
-  gap: 12px !important;
+  gap: 3vh !important;
 }
+

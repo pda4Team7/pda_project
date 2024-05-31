@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Image } from "react-bootstrap";
+import { Button, Image, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./seatInfo.css";
 import { fetchCreateSeatInfo } from "../../lib/apis/seatInfo";
@@ -19,6 +19,15 @@ const SeatInfo = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
+
+  // 정보입력x시 경고 모달창
+  const [showModal, setShowModal] = useState(false);
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  const [clickseat,setClickSeat] = useState(false);
+
 
   // 클릭 가능한 셀의 좌표 배열
   const clickableSeats = [
@@ -70,6 +79,7 @@ const SeatInfo = () => {
 
   // 그리드 클릭 핸들러
   const handleSeatClick = (row, col) => {
+    setClickSeat(true);
     const isClickable = clickableSeats.some(
       (seat) => seat.row === row && seat.col === col
     );
@@ -113,6 +123,10 @@ const SeatInfo = () => {
 
   // 정보 등록 핸들러
   const handleSeatInfoRegisterClick = () => {
+    if (clothes==="" || clickseat!==true ) {
+      // alert("착장 정보를 입력해주세요!")
+      setShowModal(true)
+    }
     const data = {
       user: user,
       startSt: startSt,
@@ -147,31 +161,25 @@ const SeatInfo = () => {
       <p>{`${startSt} > ${endSt}`}</p>
       </div>
 
-      <div className="firstInfoDiv">
-        <p>
-          내가 내리는 역을 공유하고,
+      <section className="seatInfo-content">
+      <div className="firstInfoDiv animate__animated animate__fadeIn">
+        <p id="info-big-text">
+          좌석 정보를 공유하고,
           <br />
           열람권을 획득하세요.
         </p>
-      </div>
-
-
-    <section className="seat-input-box">
-      <div className="inputDiv">
-        <div className="info-text-group">
-          <p id="info-big-text">내 좌석 정보 공유하기</p>
-        <div className="inputDivSecondInfo">
-          <p>
+        <p id="info-small-text">
             나의 좌석 위치와 내리는 역을 공유해주세요.
             <br />
             서서 가는 사람들에게 소중한 정보가 될 거예요.
           </p>
-        </div>
-        </div>
+      </div>
+
+
+    <section className="seat-input-box animate__animated animate__fadeIn">
+      <div className="inputDiv">
 
         {/* 라인 */}
-        <div className="divLine"></div>
-
         <div className="inputDivThirdInfo">
           <p>좌석 위치</p>
 
@@ -195,19 +203,30 @@ const SeatInfo = () => {
             placeholder="ex. 파란색 컨버스"
             onChange={(e) => setClothes(e.target.value)}
           />
-        </span>
-        </div>
+        </span>        
         {/* 예시 문구 */}
         <p className="inputDivExample">
           신발 색깔 혹은 나를 구분할 수 있는 착장 정보를 간단하게 알려주세요.
           (ex. 파란색 컨버스)
         </p>
+        </div>
 
         {/* 등록 버튼 */}
-        <Button id="button" onClick={handleSeatInfoRegisterClick}>
+        <Button id="info-button" onClick={handleSeatInfoRegisterClick}>
           내 정보 등록하기
         </Button>
+        <Modal show={showModal} onHide={handleModalClose} centered
+        id="seat-info-modal">
+
+        <Modal.Body>좌석과 착장 정보를 제대로 입력해주세요.</Modal.Body>
+        <Modal.Footer>
+          <Button variant='primary' onClick={handleModalClose}>
+            확인
+          </Button>
+        </Modal.Footer>
+        </Modal>        
       </div>
+      </section>
       </section>
     </div>
   );

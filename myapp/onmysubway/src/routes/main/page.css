@@ -93,7 +93,7 @@
 #btn-my-info {
   font-size: 0.7em;
   border: none;
-  white-space: pre-line;
+  white-space: pre;
   text-align: center;
   display: inline-block;
   /* white-space: normal;
@@ -315,20 +315,57 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 5px !important;
+  gap: 0px !important;
 }
+
 
 .train-number {
   display: flex;
   flex-direction: column;
+  gap: 3vw;
+}
+
+.train-number {
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: var(--light-white-gray);
 }
 
 .train-number .form-label {
-  margin-bottom: 2px;
+  font-weight: 800;
+  font-size: 1.3em;
+  margin: 0;
+  line-height: 2.2;
 }
-.train-number .form-control,
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.train-number > img {
+  border-radius: 7px;
+  margin-bottom: 5px;
+}
+
+.number-input.form-control{
+  border-radius: 10px;
+  margin-left: 10px;
+  height: 5.5vh;
+  width: 30vw;
+}
+
+
+.train-number .form-control {
+  font-size: 1.3em;
+}
+
 .train-number div {
-  margin-bottom: 15px;
+  font-size: 0.8em;
 }
 .user-state .mb-3 {
   display: flex;
@@ -351,12 +388,22 @@
 .form-check {
   margin: 0 !important;
 }
+
 .user-state-item {
   display: flex;
   flex-direction: column;
-  height: 19vh;
+  min-height: 12vh;
   font-size: 15px;
-  padding: 13px;
+  padding: 10px;
+}
+
+.user-state-item > div {
+  font-size: 0.95em;
+}
+
+.user-state-item > .user-state-text {
+  font-size: 0.9em;
+  margin-top: 7px;
 }
 
 .user-state-item strong {
