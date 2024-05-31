@@ -1,0 +1,160 @@
+.icon {
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  width: 30px;
+  opacity: 0.2;
+  position: fixed;
+}
+
+.icon:hover {
+  opacity: 0.5;
+}
+
+.info-page {
+  display: flex;
+  justify-content: center;
+  font-family: "Noto Sans KR";
+  font-weight: 350;
+  font-size: 15px;
+}
+
+.info-box {
+  margin: 0 auto;
+  padding-top: 5vmax;
+  padding-bottom: 5vmax;
+  padding-left: 3vmax;
+  padding-right: 3vmax;
+
+  width: 80vmin;
+  max-width: 500px;
+  background-color: white;
+  box-shadow: 0px 6px 10px 0px #0000000d;
+
+  position: absolute;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 12px;
+}
+
+.user-info-section > section {
+  margin-top: 3vh;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  margin-bottom: 3vh;
+}
+
+.profile-section > p {
+  font-weight: 500;
+  font-size: 1.3em;
+  margin-bottom: 0;
+}
+
+.circular-image {
+  width: 30px; /* 이미지의 너비 */
+  height: 68px; /* 이미지의 높이 */
+  border-radius: 50%; /* 원형 모양을 만듭니다. */
+  overflow: hidden; /* 이미지를 원형으로 보여주기 위해 오버플로우를 숨깁니다. */
+}
+
+.circular-image:hover {
+  transform: scale(1.2);
+}
+
+.upload-button {
+  width: 20px !important;
+}
+
+.profile-section > img {
+  width: 18vw;
+  max-width: 25%;
+}
+
+.vertical-line {
+  width: 60%;
+  height: 0.1px;
+  background-color: #c4c4c4;
+  opacity: 30%;
+  margin: 0 auto;
+}
+
+section {
+  padding: 6px;
+}
+
+.user-ticket-title,
+.user-edit-title {
+  display: flex;
+  gap: 5px;
+  text-align: center;
+  margin-bottom: 2vh;
+}
+.user-ticket-title > p,
+.user-edit-title > p {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #202244;
+}
+
+#formBasicPasswordbf,
+#formBasicPasswordaf {
+  font-size: 0.9em;
+  margin-bottom: 1vmin;
+  background-color: rgb(34, 54, 140, 0.05);
+  border: none;
+}
+
+.user-logout-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgb(193, 195, 166, 0.15);
+  border-radius: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.user-logout-title > button {
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+  color: #202244;
+  padding-left: 0;
+}
+
+.user-logout-title > img {
+  padding-left: 10px;
+}
+
+.password-before {
+  margin-bottom: 7px;
+}
+
+#match {
+  position: absolute;
+  height: 5px;
+  color: #00e51e;
+  font-size: 5px;
+  right: 40px;
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+  top: 317px; /* 입력창 위에 위치하도록 설정합니다. */
+}
+
+#notMatch {
+  position: absolute;
+  height: 5px;
+  color: red;
+  font-size: 5px;
+  right: 40px;
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+  top: 317px; /* 입력창 위에 위치하도록 설정합니다. */
+}

@@ -1,0 +1,61 @@
+@import url("//fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import "../../index.css";
+
+.total-complete {
+  height: 100vh;
+  padding: 30px;
+  font-family: var(--kr-font-family);
+}
+
+.complete {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.tottaImage {
+  width: 80vw;
+}
+
+.firstDiv {
+  width: 100%;
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+#firstDivP1 {
+  font-size: 28px;
+  font-weight: bolder;
+}
+
+#firstDivP2 {
+  padding-top: 1vh;
+  color: #475467;
+  font-size: 14px;
+}
+
+.secondDiv {
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+}
+
+.secondDiv > p {
+  padding-top: 16px;
+  color: #4461f2;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button {
+  width: 80%;
+}

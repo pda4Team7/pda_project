@@ -1,0 +1,127 @@
+@import "../../../index.css";
+
+.icon {
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  width: 30px;
+  opacity: 0.2;
+  position: fixed;
+}
+
+.icon:hover {
+  opacity: 0.5;
+}
+
+.main-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--kr-font-family);
+}
+
+.seat-info-title {
+  width: 80vw;
+  height: 7vh;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 900;
+  background-color: var(--light-dark-gray);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  margin-bottom: 2vh;
+}
+
+.seat-info-container {
+  border-radius: 12%;
+  overflow-y: auto;
+  height: 50vh;
+  width: 80vw;
+  font-size: 0.9rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+}
+
+.seat-info-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.seat-info-item img {
+  height: 40px;
+}
+
+.seat-info-text {
+  width: 35vw;
+}
+
+.seat-info-name {
+  color: var(--dark-blue);
+}
+
+.seat-info-btn {
+  width: 20vw !important;
+  font-size: 0.7rem !important;
+}
+
+.back-btn {
+  margin-top: 3vh;
+  width: 50vw !important;
+}
+
+/* 모달창 */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+/* 주의 문구 */
+.modal-body p {
+  text-align: center;
+}
+.modal-body > p {
+  margin-bottom: 20px;
+  color: var(--dark-blue);
+}
+/* 자리 위치 그림 */
+.seat-title {
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.seat-grid {
+  margin-bottom: 20px;
+  align-items: center;
+}
+.seat-row {
+  box-sizing: border-box;
+  width: 90%;
+  height: 90%;
+}
+.seat-detail-container {
+  width: 80vw;
+}
+.seat-detail-item {
+  background-color: var(--light-gray) !important;
+  font-weight: bold;
+  margin-bottom: 13px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.seat-detail-item span {
+  font-weight: bold;
+  color: #22368c;
+}
+
+.image {
+  width: 40px;
+}

@@ -1,0 +1,228 @@
+/* App.css */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+
+.seatInfo{
+  font-family: "Noto Sans KR";
+  background-color: var(--light-white-gray);
+}
+
+.back-icon {
+  opacity: 0.2;
+  position: absolute;
+  width: 30px;
+  top: 2.5vh;
+  left: 3vh;
+
+}
+
+.back-icon:hover {
+  opacity: 0.5;
+}
+
+.directionDiv {
+  align-items: center;
+}
+
+.seatInfo-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
+}
+
+/* SeatInfo.css */
+.seat-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.seat-row {
+  display: flex;
+}
+
+.seat {
+  width: 12px; /* 필요에 따라 크기 조절 */
+  height: 12px; /* 필요에 따라 크기 조절 */
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* 배경색 전환 애니메이션 추가 */
+}
+
+.seat.clickable {
+  background-color: lightblue; /* 클릭 가능한 셀의 기본 배경색 */
+}
+
+.seat.selected {
+  background-color: red;
+  width: 12px; /* 필요에 따라 크기 조절 */
+  height: 12px; /* 필요에 따라 크기 조절 */
+  padding: 0;
+  border-radius: 0;
+}
+
+.directionDiv {
+  padding-top: 3vh;
+}
+
+.directionDiv > p {
+  font-size: 0.9em;
+  font-weight: 500;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: 3vh;
+}
+
+.info-text-group {
+  margin-top:2vh;
+  margin-bottom: 2vh;
+  padding: 5px;
+  line-height: 1.7;
+}
+
+.firstInfoDiv {
+  padding-top: 10vh;
+  padding-left: 5vw;
+}
+
+#info-small-text {
+  font-size: 0.9em;
+  font-weight: 320;
+}
+
+#info-big-text {
+  text-align: left;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "Noto sans KR";
+}
+
+.inputDiv {
+ 
+  margin: 2vw;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 10px 10px rgba(130, 130, 130, 0.232); /* X, Y, Blur Radius, Color */
+  display: flex;
+  flex-direction: column;
+  gap: 3vh; 
+  padding: 20px;
+}
+
+
+
+.inputDiv > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#info-big-text {
+  font-weight: 600;
+}
+
+.inputDivFirstInfo > p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.inputDivSecondInfo > p {
+  font-size: 0.9em;
+  color: #475467;
+  margin-bottom: 0;
+}
+
+.divLine {
+  border-top: 1px solid #e4e4e4;
+}
+
+.inputDivThirdInfo > p {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.inputDivGoal {
+  padding: 10px;
+  background-color: #f2f4f6;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.inputDivGoal > p {
+  color: #22368c;
+  font-weight: bold;
+  margin: 0;
+}
+
+#endSt {
+  color: black;
+  text-align: left;
+  margin-left: 2.5vw;
+  
+}
+
+/* input 2 */
+.inputDivInput {
+  margin-top: 1vh;
+  background-color: #f2f4f6;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+/* 신발 착장 */
+.inputDivInput > p {
+  margin: 0;
+  color: #22368c;
+  font-weight: bold;
+}
+
+/* 파란색 컨버스 */
+.inputDivInput > input {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  margin-left: 2vw;
+}
+
+.inputDivInput > input::placeholder {
+  font-style: italic;
+}
+
+.inputDivExample {
+  color: #979797;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 15px;
+}
+
+#info-button {
+  background-color: #4461f2;
+  margin-bottom: 1vh;
+  padding: 1vh;
+  border-radius: 7px;
+}
+
+#seat-info-modal {
+  border-top: none;
+  width: 85vw;
+  margin: 0 auto;
+}
+
+#seat-info-modal > .modal-content > .modal-body {
+  margin-top: 3vh;
+}
+
+#seat-info-modal > .modal-content > .modal-footer > button {
+  margin: 0 auto;
+  width: 100%;
+  background-color: gray;
+  border: none;
+}

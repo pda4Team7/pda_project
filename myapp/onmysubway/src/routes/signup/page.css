@@ -1,0 +1,96 @@
+@import "../../index.css";
+
+.signup-box {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+#text-signup {
+    text-align: center;
+    margin-bottom: 7vmax;
+}
+
+.signup-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7vmax;
+}
+
+.signup-input-group > input, .nickname-group > input, .password-input-group > input, #signup-passwordcheck {
+    background-color: transparent;  
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #A8A6A7;
+  font-family: "Nunito";
+  font-weight: 650;
+}
+
+.signup-input-group > input::placeholder, .nickname-group > input::placeholder, .password-input-group > input::placeholder, #signup-passwordcheck::placeholder {
+  color: rgb(167, 167, 167);
+}
+
+.passwordcheck-group {
+    position: relative;
+}
+
+#passwordcheck-icon {
+    position: absolute;
+    bottom: 25%;
+    right: 0;
+}
+
+#btn-signup-submit {
+background-color:#4461F2 ;
+  box-shadow: 0px 4px 4px rgba(0, 19, 166, 0.253);
+  font-style: italic;  
+  width: 60vw;
+  margin: 0 auto;
+}
+
+#btn-signup-submit:hover {
+    background-color: #0022aad8;
+  }
+
+.nickname-group {
+    display: flex;
+    gap: 10px;
+    font-size: small;
+    white-space: nowrap;
+    position: relative;
+}
+
+.nickname-group > img {
+    position:absolute;
+    right: 0;
+    bottom: 25%;
+}
+
+.nickname-group > button {
+    font-size: smaller;
+    border: none;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    background-color: #b5b5b58f;
+    color: white;
+    border-radius: 5px;
+
+    position: absolute;
+    right: 10%;
+    bottom: 15%;
+    padding: 5px;
+}
+
+.nickname-group > button:hover {
+    background-color: #b5b5b58f;
+    color: white;
+}
+
+.password-warning > p {
+    padding: 10px;
+    font-size: 0.9em;
+    font-family: 'Noto Sans KR';
+    color: gray;
+}

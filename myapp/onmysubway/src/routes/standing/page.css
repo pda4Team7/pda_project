@@ -1,0 +1,69 @@
+@import "../../index.css";
+
+.icon {
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  width: 30px;
+  opacity: 0.2;
+  position: fixed;
+}
+
+.icon:hover {
+  opacity: 0.5;
+}
+
+.standing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--kr-font-family);
+  height: 100vh;
+}
+.finding-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8vw;
+}
+
+.destination-text strong {
+  color: var(--dark-blue);
+}
+
+.ttota-button {
+    width: 60vw;
+}
+
+.finding-text {
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 5vh;
+}
+.finding-text strong {
+  font-weight: 900;
+}
+
+.ttotta-button {
+  width: 80vw;
+}
+
+.finding-img {
+  padding-left: calc(100vw - 80vw - 8vw);
+}
+
+/* 모달창 css */
+/* 이미지 */
+.ttotta-image {
+  width: 100%;
+}
+/* 안에 text */
+.modal-title-text {
+  font-weight: 800;
+  font-size: 1.3em;
+}
+.modal-body {
+  gap: 3vh !important;
+}
+
