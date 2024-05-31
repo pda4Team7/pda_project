@@ -19,6 +19,7 @@ const Complete = () => {
         src={infoComplete}
         alt="onmysubway_seatInfo_image"
       />
+  
       <div className="firstDiv">
         <p id="firstDivP1">정보를 공유했어요!</p>
         <p id="firstDivP2">
